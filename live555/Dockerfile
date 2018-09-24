@@ -57,5 +57,5 @@ LABEL \
     org.label-schema.url="" \
     org.label-schema.usage="https://github.com/alex-savin/hassio-addons/live555/tree/master/README.md" \
     org.label-schema.vcs-ref=${BUILD_REF} \
-    org.label-schema.vcs-url="https://github.com/alex-savin/hassio-addons/live555" \
+    org.label-schema.vcs-url="https://github.com/alex-savin/hassio-addons/tree/master/live555" \
     org.label-schema.vendor="SmartHouse's Hass.io Add-ons"
