@@ -3,6 +3,7 @@
     "version": "0.1",
     "slug": "live555",
     "description": "An Live555 RTSP Proxy Server",
+    "arch": ["aarch64", "amd64", "armhf", "i386"],
     "url": "https://github.com/alex-savin/hassio-addons/live555/",
     "startup": "system",
     "boot": "auto",
@@ -20,6 +21,5 @@
 	    "str"
 	]
     },
-#    "image": "smarthouse/{arch}-addon-live555",
     "timeout": 20
 }
