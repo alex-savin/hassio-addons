@@ -4,7 +4,7 @@
     "slug": "live555",
     "description": "An Live555 RTSP Proxy Server",
     "arch": ["aarch64", "amd64", "armhf", "i386"],
-    "url": "https://github.com/alex-savin/hassio-addons/live555/",
+    "url": "https://github.com/alex-savin/hassio-addons/tree/master/live555",
     "startup": "system",
     "boot": "auto",
     "ports": {
