@@ -20,6 +20,6 @@
 	    "str"
 	]
     },
-    "image": "smarthouse/{arch}-addon-live555",
+#    "image": "smarthouse/{arch}-addon-live555",
     "timeout": 20
 }
