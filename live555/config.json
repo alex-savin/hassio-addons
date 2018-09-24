@@ -1,0 +1,25 @@
+{
+    "name": "Live555 RTSP Proxy Server",
+    "version": "0.1",
+    "slug": "live555",
+    "description": "An Live555 RTSP Proxy Server",
+    "url": "https://github.com/alex-savin/hassio-addons/live555/",
+    "startup": "system",
+    "boot": "auto",
+    "ports": {
+	"554/tcp": 554,
+	"554/udp": 554
+    },
+    "options": {
+	"streams": [
+	    "rtsp://admin:password127.0.0.1:554/streamNN"
+	]
+    },
+    "schema": {
+	"streams": [
+	    "str"
+	]
+    },
+    "image": "smarthouse/{arch}-addon-live555",
+    "timeout": 20
+}

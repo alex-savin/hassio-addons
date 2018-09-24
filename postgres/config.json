@@ -1,0 +1,50 @@
+{
+    "name": "Postgres DB",
+    "version": "0.1",
+    "slug": "postgres",
+    "description": "An SQL database server",
+    "url": "https://github.com/alex-savin/hassio-addons/postgres/",
+    "startup": "system",
+    "boot": "auto",
+    "ports": {
+	"5432/tcp": 5432
+    },
+    "options": {
+	"databases": ["homeassistant"],
+	"logins": [
+	    {
+		"username": "hass",
+		"host": "%",
+		"password": null
+	    }
+	],
+	"rights": [
+	    {
+		"username": "hass",
+		"host": "%",
+		"database": "homeassistant",
+		"grant": "ALL PRIVILEGES ON"
+	    }
+	]
+    },
+    "schema": {
+	"databases": ["str"],
+	"logins": [
+	    {
+		"username": "str",
+		"host": "str",
+		"password": "str"
+	    }
+	],
+	"rights": [
+	    {
+		"username": "str",
+		"host": "str",
+		"database": "str",
+		"grant": "str"
+	    }
+	]
+    },
+    "image": "homeassistant/{arch}-addon-postgres",
+    "timeout": 20
+}
