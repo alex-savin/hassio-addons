@@ -3,6 +3,7 @@
 # SmartHouse Hass.io Add-ons: Live555 RTSP Proxy Server
 # Runs the Live555 RTSP Proxy Server
 # ==============================================================================
+source /usr/lib/hassio-addons/base.sh
 
 CONFIG_PATH=/data/options.json
 STREAMS=$(jq --raw-output ".streams[]" $CONFIG_PATH)

@@ -14,14 +14,12 @@
 	"logins": [
 	    {
 		"username": "hass",
-		"host": "%",
 		"password": null
 	    }
 	],
 	"rights": [
 	    {
 		"username": "hass",
-		"host": "%",
 		"database": "homeassistant",
 		"grant": "ALL PRIVILEGES ON"
 	    }
@@ -32,19 +30,16 @@
 	"logins": [
 	    {
 		"username": "str",
-		"host": "str",
 		"password": "str"
 	    }
 	],
 	"rights": [
 	    {
 		"username": "str",
-		"host": "str",
 		"database": "str",
 		"grant": "str"
 	    }
 	]
     },
-    "image": "homeassistant/{arch}-addon-postgres",
     "timeout": 20
 }

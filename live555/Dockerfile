@@ -13,11 +13,14 @@ RUN \
 	make \
     \
     && apk add --no-cache \
-        live-media-utils \
+	live-media-utils \
     \
     && cd /tmp \
     && git clone https://github.com/rgaufman/live555.git \
     && cd live555 \
+    \
+    && sed -i -e 's/proxyStream\-\%d/stream%02d/g' ./proxyServer/live555ProxyServer.cpp \
+    && sed -i -e "s/proxyStream/stream/g" ./proxyServer/live555ProxyServer.cpp \
     \
     && ./genMakefiles linux \
     && make -j4 \
