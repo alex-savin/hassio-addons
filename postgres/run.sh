@@ -3,7 +3,7 @@ set -Eeo pipefail
 # TODO swap to -Eeuo pipefail above (after handling all potentially-unset variables)
 
 CONFIG_PATH=/data/options.json
-MARIADB_DATA=/data/databases
+PGSQLDB_DATA=/data/databases
 
 DATABASES=$(jq --raw-output ".databases[]" $CONFIG_PATH)
 LOGINS=$(jq --raw-output '.logins | length' $CONFIG_PATH)
@@ -136,18 +136,12 @@ if [ "$1" = 'postgres' ]; then
 
 	echo
 ####################################################################################################
-psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
-    CREATE USER $USERNAME;
-    CREATE DATABASE $line;
-    GRANT $GRANT DATABASE $DATABASE TO $USERNAME;
-EOSQL
-
-
 	# Init databases
 	echo "[INFO] Init custom database"
 	for line in $DATABASES; do
 	    echo "[INFO] Create database $line"
-	    mysql -e "CREATE DATABASE $line;" 2> /dev/null || true
+	    "${psql[@]}" -c "CREATE DATABASE $line;" 2> /dev/null || true
+#	    mysql -e "CREATE DATABASE $line;" 2> /dev/null || true
 	done
 
 	# Init logins
@@ -156,12 +150,14 @@ EOSQL
 	    USERNAME=$(jq --raw-output ".logins[$i].username" $CONFIG_PATH)
 	    PASSWORD=$(jq --raw-output ".logins[$i].password" $CONFIG_PATH)
 
-	    if mysql -e "SET PASSWORD FOR '$USERNAME'@'$HOST' = PASSWORD('$PASSWORD');" 2> /dev/null; then
-		echo "[INFO] Update user $USERNAME"
-	    else
-		echo "[INFO] Create user $USERNAME"
-		mysql -e "CREATE USER '$USERNAME'@'$HOST' IDENTIFIED BY '$PASSWORD';" 2> /dev/null || true
-	    fi
+	    "${psql[@]}" -c "CREATE USER $USERNAME WITH PASSWORD '$PASSWORD';"2> /dev/null || true
+
+#	    if mysql -e "SET PASSWORD FOR '$USERNAME' = PASSWORD('$PASSWORD');" 2> /dev/null; then
+#		echo "[INFO] Update user $USERNAME"
+#	    else
+#		echo "[INFO] Create user $USERNAME"
+#		mysql -e "CREATE USER '$USERNAME' IDENTIFIED BY '$PASSWORD';" 2> /dev/null || true
+#	    fi
 	done
 
 	# Init rights
@@ -171,30 +167,10 @@ EOSQL
 	    DATABASE=$(jq --raw-output ".rights[$i].database" $CONFIG_PATH)
 	    GRANT=$(jq --raw-output ".rights[$i].grant" $CONFIG_PATH)
 
-	    echo "[INFO] Alter rights for $USERNAME@$HOST - $DATABASE"
-	    mysql -e "GRANT $GRANT $DATABASE.* TO '$USERNAME'@'$HOST';" 2> /dev/null || true
+	    echo "[INFO] Alter rights for $USERNAME - $DATABASE"
+	    "${psql[@]}" -c "GRANT $GRANT DATABASE $DATABASE TO $USERNAME;" 2> /dev/null || true
+#	    mysql -e "GRANT $GRANT $DATABASE.* TO '$USERNAME'@'$HOST';" 2> /dev/null || true
 	done
-####################################################################################################
-	for f in /docker-entrypoint-initdb.d/*; do
-	    case "$f" in
-		*.sh)
-		    # https://github.com/docker-library/postgres/issues/450#issuecomment-393167936
-		    # https://github.com/docker-library/postgres/pull/452
-		    if [ -x "$f" ]; then
-			echo "$0: running $f"
-			"$f"
-		    else
-			echo "$0: sourcing $f"
-			. "$f"
-		    fi
-		    ;;
-		*.sql)    echo "$0: running $f"; "${psql[@]}" -f "$f"; echo ;;
-		*.sql.gz) echo "$0: running $f"; gunzip -c "$f" | "${psql[@]}"; echo ;;
-		*)        echo "$0: ignoring $f" ;;
-	    esac
-	    echo
-	done
-####################################################################################################
 
 	PGUSER="${PGUSER:-$POSTGRES_USER}" \
 	pg_ctl -D "$PGDATA" -m fast -w stop
