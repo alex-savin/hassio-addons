@@ -13,7 +13,7 @@
     },
     "options": {
 	"streams": [
-	    "rtsp://admin:password127.0.0.1:554/streamNN"
+	    "rtsp://[username]:[password]@[camera_ip]:[port]/[stream_uri]"
 	]
     },
     "schema": {
