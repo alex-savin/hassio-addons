@@ -136,39 +136,44 @@ if [ "$1" = 'postgres' ]; then
 
 	echo
 ####################################################################################################
-# Init databases
-echo "[INFO] Init custom database"
-for line in $DATABASES; do
-    echo "[INFO] Create database $line"
-    mysql -e "CREATE DATABASE $line;" 2> /dev/null || true
-done
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
+    CREATE USER $USERNAME;
+    CREATE DATABASE $line;
+    GRANT $GRANT DATABASE $DATABASE TO $USERNAME;
+EOSQL
 
-# Init logins
-echo "[INFO] Init/Update users"
-for (( i=0; i < "$LOGINS"; i++ )); do
-    USERNAME=$(jq --raw-output ".logins[$i].username" $CONFIG_PATH)
-    PASSWORD=$(jq --raw-output ".logins[$i].password" $CONFIG_PATH)
-    HOST=$(jq --raw-output ".logins[$i].host" $CONFIG_PATH)
 
-    if mysql -e "SET PASSWORD FOR '$USERNAME'@'$HOST' = PASSWORD('$PASSWORD');" 2> /dev/null; then
-        echo "[INFO] Update user $USERNAME"
-    else
-        echo "[INFO] Create user $USERNAME"
-        mysql -e "CREATE USER '$USERNAME'@'$HOST' IDENTIFIED BY '$PASSWORD';" 2> /dev/null || true
-    fi
-done
+	# Init databases
+	echo "[INFO] Init custom database"
+	for line in $DATABASES; do
+	    echo "[INFO] Create database $line"
+	    mysql -e "CREATE DATABASE $line;" 2> /dev/null || true
+	done
 
-# Init rights
-echo "[INFO] Init/Update rights"
-for (( i=0; i < "$RIGHTS"; i++ )); do
-    USERNAME=$(jq --raw-output ".rights[$i].username" $CONFIG_PATH)
-    HOST=$(jq --raw-output ".rights[$i].host" $CONFIG_PATH)
-    DATABASE=$(jq --raw-output ".rights[$i].database" $CONFIG_PATH)
-    GRANT=$(jq --raw-output ".rights[$i].grant" $CONFIG_PATH)
+	# Init logins
+	echo "[INFO] Init/Update users"
+	for (( i=0; i < "$LOGINS"; i++ )); do
+	    USERNAME=$(jq --raw-output ".logins[$i].username" $CONFIG_PATH)
+	    PASSWORD=$(jq --raw-output ".logins[$i].password" $CONFIG_PATH)
 
-    echo "[INFO] Alter rights for $USERNAME@$HOST - $DATABASE"
-    mysql -e "GRANT $GRANT $DATABASE.* TO '$USERNAME'@'$HOST';" 2> /dev/null || true
-done
+	    if mysql -e "SET PASSWORD FOR '$USERNAME'@'$HOST' = PASSWORD('$PASSWORD');" 2> /dev/null; then
+		echo "[INFO] Update user $USERNAME"
+	    else
+		echo "[INFO] Create user $USERNAME"
+		mysql -e "CREATE USER '$USERNAME'@'$HOST' IDENTIFIED BY '$PASSWORD';" 2> /dev/null || true
+	    fi
+	done
+
+	# Init rights
+	echo "[INFO] Init/Update rights"
+	for (( i=0; i < "$RIGHTS"; i++ )); do
+	    USERNAME=$(jq --raw-output ".rights[$i].username" $CONFIG_PATH)
+	    DATABASE=$(jq --raw-output ".rights[$i].database" $CONFIG_PATH)
+	    GRANT=$(jq --raw-output ".rights[$i].grant" $CONFIG_PATH)
+
+	    echo "[INFO] Alter rights for $USERNAME@$HOST - $DATABASE"
+	    mysql -e "GRANT $GRANT $DATABASE.* TO '$USERNAME'@'$HOST';" 2> /dev/null || true
+	done
 ####################################################################################################
 	for f in /docker-entrypoint-initdb.d/*; do
 	    case "$f" in
@@ -189,6 +194,7 @@ done
 	    esac
 	    echo
 	done
+####################################################################################################
 
 	PGUSER="${PGUSER:-$POSTGRES_USER}" \
 	pg_ctl -D "$PGDATA" -m fast -w stop

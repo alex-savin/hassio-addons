@@ -1,6 +1,6 @@
 {
     "name": "Postgres DB",
-    "version": "0.1",
+    "version": "0.1.0",
     "slug": "postgres",
     "description": "An SQL database server",
     "url": "https://github.com/alex-savin/hassio-addons/postgres/",
