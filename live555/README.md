@@ -61,6 +61,7 @@ Example add-on configuration:
 ```json
 {
   "log_level": "info",
+  "i_like_to_be_pwned": true,
   "streams": [
     "rtsp://[username]:[password]@[camera_ip]:[port]/[stream_uri]"
   ]
