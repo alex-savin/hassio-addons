@@ -61,7 +61,6 @@ Example add-on configuration:
 ```json
 {
   "log_level": "info",
-  "i_like_to_be_pwned": true,
   "streams": [
     "rtsp://[username]:[password]@[camera_ip]:[port]/[stream_uri]"
   ]
@@ -94,11 +93,6 @@ This option allows you to a list of camera streams (e.g., point
 `rtsp://[username]:[password]@[camera_ip]:[port]/[stream_uri]`to the IP address of your camera stream).
 
 See the example above this chapter for a more visual representation.
-
-### Option: `i_like_to_be_pwned`
-
-Adding this option to the add-on configuration allows to you bypass the
-HaveIBeenPwned password requirement by setting it to `true`.
 
 **Note**: _We STRONGLY suggest picking a stronger/safer password instead of
 using this option! USE AT YOUR OWN RISK!_
