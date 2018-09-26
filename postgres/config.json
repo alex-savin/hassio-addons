@@ -1,9 +1,9 @@
 {
     "name": "Postgres DB",
-    "version": "0.1.0",
+    "version": "0.1.2",
     "slug": "postgres",
     "description": "An SQL database server",
-    "url": "https://github.com/alex-savin/hassio-addons/postgres/",
+    "url": "https://github.com/alex-savin/hassio-addons/tree/master/postgres",
     "startup": "system",
     "boot": "auto",
     "ports": {

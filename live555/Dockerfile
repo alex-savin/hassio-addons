@@ -4,6 +4,9 @@ FROM $BUILD_FROM
 # Add env
 ENV LANG C.UTF-8
 
+# Set shell
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 # Setup base
 RUN \
     apk add --no-cache --virtual .build-dependencies \
@@ -50,11 +53,11 @@ LABEL \
     io.hass.type="addon" \
     io.hass.version=${BUILD_VERSION} \
     maintainer="Alex Savin <alex@smarthouse.site>" \
-    org.label-schema.description="Live555 RTSP Proxy Server, helps to do not overload cameras by multiple stream clients" \
+    org.label-schema.description="Live555 RTSP Proxy Server, helps to do not overload cameras by multiple streams" \
     org.label-schema.build-date=${BUILD_DATE} \
     org.label-schema.name="Live555 RTSP Proxy Server" \
     org.label-schema.schema-version="1.0" \
-    org.label-schema.url="" \
+    org.label-schema.url="https://github.com/alex-savin/hassio-addons/tree/master/live555" \
     org.label-schema.usage="https://github.com/alex-savin/hassio-addons/live555/tree/master/README.md" \
     org.label-schema.vcs-ref=${BUILD_REF} \
     org.label-schema.vcs-url="https://github.com/alex-savin/hassio-addons/tree/master/live555" \

@@ -1,11 +1,11 @@
 {
     "name": "Live555 RTSP Proxy Server",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "slug": "live555",
-    "description": "An Live555 RTSP Proxy Server",
+    "description": "An RTSP Proxy Server",
     "arch": ["aarch64", "amd64", "armhf", "i386"],
     "url": "https://github.com/alex-savin/hassio-addons/tree/master/live555",
-    "startup": "system",
+    "startup": "services",
     "boot": "auto",
     "ports": {
 	"554/tcp": 554,

@@ -41,9 +41,9 @@ if [ "$1" = 'postgres' ] && [ "$(id -u)" = '0' ]; then
     chown -R postgres "$PGDATA"
     chmod 700 "$PGDATA"
 
-    mkdir -p /var/run/postgresql
-    chown -R postgres /var/run/postgresql
-    chmod 775 /var/run/postgresql
+    mkdir -p $PGSQLDB_DATA
+    chown -R postgres $PGSQLDB_DATA
+    chmod 775 $PGSQLDB_DATA
 
     # Create the transaction log directory before initdb is run (below) so the directory is owned by the correct user
     if [ "$POSTGRES_INITDB_WALDIR" ]; then
@@ -127,40 +127,34 @@ if [ "$1" = 'postgres' ]; then
 	psql=( psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --no-password )
 
 	if [ "$POSTGRES_DB" != 'postgres' ]; then
-	    "${psql[@]}" --dbname postgres --set db="$POSTGRES_DB" <<-'EOSQL'
-		CREATE DATABASE :"db" ;
-	    EOSQL
+	    "${psql[@]}" --dbname postgres --set db="$POSTGRES_DB" -c 'CREATE DATABASE :"db" ;'
 	    echo
 	fi
 	psql+=( --dbname "$POSTGRES_DB" )
 
 	echo
-####################################################################################################
-	# Init databases
+	# creating databases
 	echo "[INFO] Init custom database"
 	for line in $DATABASES; do
 	    echo "[INFO] Create database $line"
 	    "${psql[@]}" -c "CREATE DATABASE $line;" 2> /dev/null || true
-#	    mysql -e "CREATE DATABASE $line;" 2> /dev/null || true
 	done
 
-	# Init logins
+	# creating/updating logins
 	echo "[INFO] Init/Update users"
 	for (( i=0; i < "$LOGINS"; i++ )); do
 	    USERNAME=$(jq --raw-output ".logins[$i].username" $CONFIG_PATH)
 	    PASSWORD=$(jq --raw-output ".logins[$i].password" $CONFIG_PATH)
 
-	    "${psql[@]}" -c "CREATE USER $USERNAME WITH PASSWORD '$PASSWORD';"2> /dev/null || true
-
-#	    if mysql -e "SET PASSWORD FOR '$USERNAME' = PASSWORD('$PASSWORD');" 2> /dev/null; then
-#		echo "[INFO] Update user $USERNAME"
-#	    else
-#		echo "[INFO] Create user $USERNAME"
-#		mysql -e "CREATE USER '$USERNAME' IDENTIFIED BY '$PASSWORD';" 2> /dev/null || true
-#	    fi
+	    if ${psql[@]} -c "ALTER USER $USERNAME WITH PASSWORD '$PASSWORD';" 2> /dev/null; then
+		echo "[INFO] Update user $USERNAME"
+	    else
+		echo "[INFO] Create user $USERNAME"
+		${psql[@]} -c "CREATE USER $USERNAME WITH PASSWORD '$PASSWORD';" 2> /dev/null || true
+	    fi
 	done
 
-	# Init rights
+	# setting permissions
 	echo "[INFO] Init/Update rights"
 	for (( i=0; i < "$RIGHTS"; i++ )); do
 	    USERNAME=$(jq --raw-output ".rights[$i].username" $CONFIG_PATH)
@@ -169,7 +163,6 @@ if [ "$1" = 'postgres' ]; then
 
 	    echo "[INFO] Alter rights for $USERNAME - $DATABASE"
 	    "${psql[@]}" -c "GRANT $GRANT DATABASE $DATABASE TO $USERNAME;" 2> /dev/null || true
-#	    mysql -e "GRANT $GRANT $DATABASE.* TO '$USERNAME'@'$HOST';" 2> /dev/null || true
 	done
 
 	PGUSER="${PGUSER:-$POSTGRES_USER}" \

@@ -1,5 +1,11 @@
 # vim:set ft=dockerfile:
-FROM alpine:3.8
+
+ARG BUILD_FROM=hassioaddons/base:2.2.0
+# hadolint ignore=DL3006
+FROM ${BUILD_FROM}
+
+# Set shell
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # alpine includes "postgres" user/group in base install
 #   /etc/passwd:22:postgres:x:70:70::/var/lib/postgresql:/bin/sh
@@ -18,8 +24,6 @@ RUN set -ex; \
 # make the "en_US.UTF-8" locale so postgres will be utf-8 enabled by default
 # alpine doesn't require explicit locale-file generation
 ENV LANG en_US.utf8
-
-RUN mkdir /docker-entrypoint-initdb.d
 
 ENV PG_MAJOR 10
 ENV PG_VERSION 10.5
@@ -140,13 +144,32 @@ RUN sed -ri "s!^#?(listen_addresses)\s*=\s*\S+.*!\1 = '*'!" /usr/local/share/pos
 
 RUN mkdir -p /var/run/postgresql && chown -R postgres:postgres /var/run/postgresql && chmod 2777 /var/run/postgresql
 
-ENV PGDATA /var/lib/postgresql/data
+ENV PGDATA /data/databases
 RUN mkdir -p "$PGDATA" && chown -R postgres:postgres "$PGDATA" && chmod 777 "$PGDATA" # this 777 will be replaced by 700 at runtime (allows semi-arbitrary "--user" values)
-VOLUME /var/lib/postgresql/data
 
 COPY run.sh /usr/local/bin/
 RUN ln -s usr/local/bin/run.sh / # backwards compat
-#ENTRYPOINT ["run.sh"]
 
-EXPOSE 5432
-#CMD ["postgres"]
+# Build arugments
+ARG BUILD_ARCH
+ARG BUILD_DATE
+ARG BUILD_REF
+ARG BUILD_VERSION
+
+# Labels
+LABEL \
+    io.hass.name="Postgres DB" \
+    io.hass.description="An SQL database server" \
+    io.hass.arch="${BUILD_ARCH}" \
+    io.hass.type="addon" \
+    io.hass.version=${BUILD_VERSION} \
+    maintainer="Alex Savin <alex@smarthouse.site>" \
+    org.label-schema.description="An SQL database server" \
+    org.label-schema.build-date=${BUILD_DATE} \
+    org.label-schema.name="Postgres DB" \
+    org.label-schema.schema-version="1.0" \
+    org.label-schema.url="https://github.com/alex-savin/hassio-addons/tree/master/postgres" \
+    org.label-schema.usage="https://github.com/alex-savin/hassio-addons/postgres/tree/master/README.md" \
+    org.label-schema.vcs-ref=${BUILD_REF} \
+    org.label-schema.vcs-url="https://github.com/alex-savin/hassio-addons/tree/master/postgres" \
+    org.label-schema.vendor="SmartHouse's Hass.io Add-ons"
