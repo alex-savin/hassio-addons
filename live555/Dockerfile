@@ -7,6 +7,9 @@ ENV LANG C.UTF-8
 # Set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
+# Copy root filesystem
+COPY rootfs /
+
 # Setup base
 RUN \
     apk add --no-cache --virtual .build-dependencies \
@@ -33,11 +36,11 @@ RUN \
     && rm -rf /tmp/* \
     && apk del --purge .build-dependencies
 
-# Copy data
-COPY run.sh /
-RUN chmod a+x /run.sh
-
-CMD [ "/run.sh" ]
+## Copy data
+#COPY run.sh /
+#RUN chmod a+x /run.sh
+#
+#CMD [ "/run.sh" ]
 
 # Build arugments
 ARG BUILD_ARCH

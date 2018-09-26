@@ -1,9 +1,15 @@
-#!/usr/bin/env bash
+#!/usr/bin/with-contenv bash
+# ==============================================================================
+# SmartHouse Hass.io Add-ons: Postgres DB
+# Runs the Postgres DB SQL Server
+# ==============================================================================
+source /usr/lib/hassio-addons/base.sh
+
 set -Eeo pipefail
 # TODO swap to -Eeuo pipefail above (after handling all potentially-unset variables)
 
 CONFIG_PATH=/data/options.json
-PGSQLDB_DATA=/data/databases
+#PGSQLDB_DATA=/data/databases
 
 DATABASES=$(jq --raw-output ".databases[]" $CONFIG_PATH)
 LOGINS=$(jq --raw-output '.logins | length' $CONFIG_PATH)
@@ -41,9 +47,9 @@ if [ "$1" = 'postgres' ] && [ "$(id -u)" = '0' ]; then
     chown -R postgres "$PGDATA"
     chmod 700 "$PGDATA"
 
-    mkdir -p $PGSQLDB_DATA
-    chown -R postgres $PGSQLDB_DATA
-    chmod 775 $PGSQLDB_DATA
+    mkdir -p /var/run/postgresql
+    chown -R postgres /var/run/postgresql
+    chmod 775 /var/run/postgresql
 
     # Create the transaction log directory before initdb is run (below) so the directory is owned by the correct user
     if [ "$POSTGRES_INITDB_WALDIR" ]; then
@@ -98,7 +104,7 @@ if [ "$1" = 'postgres' ]; then
 		WARNING: No password has been set for the database.
 		         This will allow anyone with access to the
 		         Postgres port to access your database. In
-		         Dockers default configuration, this is
+		         Docker's default configuration, this is
 		         effectively any other container on the same
 		         system.
 		         Use "-e POSTGRES_PASSWORD=password" to set
@@ -176,4 +182,6 @@ if [ "$1" = 'postgres' ]; then
     fi
 fi
 
+# Run the Postgres DB SQL Server
+hass.log.info "Starting Postgres DB SQL Server..."
 exec "$@"

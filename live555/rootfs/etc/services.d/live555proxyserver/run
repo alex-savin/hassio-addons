@@ -9,4 +9,5 @@ CONFIG_PATH=/data/options.json
 STREAMS=$(jq --raw-output ".streams[]" $CONFIG_PATH)
 
 # Run the Live555 RTSP Proxy Server
+hass.log.info "Starting Live555 RTSP Proxy Server..."
 exec live555ProxyServer ${STREAMS[*]}

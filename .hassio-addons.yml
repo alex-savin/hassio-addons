@@ -1,0 +1,11 @@
+---
+channel: stable
+addons:
+  live555:
+    repository: alex-savin/hassio-addon-live
+    target: live555
+    image: smarthouseint/aircast-{arch}
+  postgres:
+    repository: alex-savin/hassio-addon-postgres
+    target: postgres
+    image: smarthouseint/airsonos-{arch}

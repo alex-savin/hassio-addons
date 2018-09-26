@@ -9,23 +9,42 @@
     "ports": {
 	"5432/tcp": 5432
     },
+    "docker_api": false,
+    "hassio_api": true,
+    "hassio_role": "default",
+    "homeassistant_api": false,
+    "host_network": false,
+    "host_ipc": false,
+    "host_dbus": false,
+    "host_pid": false,
+    "auto_uart": false,
+    "privileged": [],
+    "full_access": false,
+    "apparmor": false,
+    "audio": false,
+    "gpio": false,
+    "devicetree": false,
+    "stdin": false,
+    "legacy": false,
     "options": {
+	"log_level": "info",
 	"databases": ["homeassistant"],
 	"logins": [
 	    {
-		"username": "hass",
+		"username": "hassio",
 		"password": null
 	    }
 	],
 	"rights": [
 	    {
-		"username": "hass",
+		"username": "hassio",
 		"database": "homeassistant",
 		"grant": "ALL PRIVILEGES ON"
 	    }
 	]
     },
     "schema": {
+	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)",
 	"databases": ["str"],
 	"logins": [
 	    {

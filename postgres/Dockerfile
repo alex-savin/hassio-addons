@@ -1,6 +1,6 @@
 # vim:set ft=dockerfile:
 
-ARG BUILD_FROM=hassioaddons/base:2.2.0
+ARG BUILD_FROM=hassioaddons/base:2.3.0
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -128,6 +128,7 @@ RUN set -ex \
 	$runDeps \
 	bash \
 	su-exec \
+	jq \
 # tzdata is optional, but only adds around 1Mb to image size and is recommended by Django documentation:
 # https://docs.djangoproject.com/en/1.10/ref/databases/#optimizing-postgresql-s-configuration
 	tzdata \
@@ -146,9 +147,6 @@ RUN mkdir -p /var/run/postgresql && chown -R postgres:postgres /var/run/postgres
 
 ENV PGDATA /data/databases
 RUN mkdir -p "$PGDATA" && chown -R postgres:postgres "$PGDATA" && chmod 777 "$PGDATA" # this 777 will be replaced by 700 at runtime (allows semi-arbitrary "--user" values)
-
-COPY run.sh /usr/local/bin/
-RUN ln -s usr/local/bin/run.sh / # backwards compat
 
 # Build arugments
 ARG BUILD_ARCH
