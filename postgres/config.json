@@ -63,6 +63,7 @@
     "timeout": 20,
     "environment": {
 	"LOG_FORMAT": "{LEVEL}: {MESSAGE}"
-    },
-    "image": "smarthouseint/{arch}-addon-postgres"
+    }
+#    },
+#    "image": "smarthouseint/{arch}-addon-postgres"
 }
