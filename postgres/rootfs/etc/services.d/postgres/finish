@@ -1,7 +1,7 @@
 #!/usr/bin/execlineb -S0
 # ==============================================================================
-# SamrtHouse's Hass.io Add-ons: Live555 RTSP Proxy Server
-# Take down the S6 supervision tree when Live555 RTSP Proxy Server
+# SamrtHouse's Hass.io Add-ons: Postgres DB Server
+# Take down the S6 supervision tree when Postgres DB Server
 # ==============================================================================
 if -n { s6-test $# -ne 0 }
 if -n { s6-test ${1} -eq 256 }
