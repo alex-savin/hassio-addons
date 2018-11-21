@@ -46,6 +46,7 @@
     "timeout": 20,
     "environment": {
 	"LOG_FORMAT": "{LEVEL}: {MESSAGE}"
-    },
-    "image": "smarthouseint/{arch}-addon-live555"
+    }
+#    },
+#    "image": "smarthouseint/{arch}-addon-live555"
 }
