@@ -10,6 +10,6 @@ addons:
     target: postgres
     image: smarthouseint/{arch}-addon-postgres
   google-assistant-webserver:
-    repository: alex-savin/hassio-addon-oogle-assistant-webserver
+    repository: alex-savin/hassio-addon-google-assistant-webserver
     target: google-assistant-webserver
     image: smarthouseint/{arch}-addon-google-assistant-webserver
