@@ -1,0 +1,30 @@
+#!/usr/bin/with-contenv bash
+# ==============================================================================
+# SmartHouse Hass.io Add-ons: Google Assistant Web Server
+# Runs the Google Assistant Web Server
+# ==============================================================================
+source /usr/lib/hassio-addons/base.sh
+
+CONFIG_PATH=/data/options.json
+CLIENT_JSON=/data/client.json
+CRED_JSON=/data/cred.json
+
+CLIENT_SECRETS=$(jq --raw-output '.client_secrets' $CONFIG_PATH)
+
+# check if a new assistant file exists
+if [ -f "/share/$CLIENT_SECRETS" ]; then
+    hass.log.info "Install/Update service client_secrets file"
+    cp -f "/share/$CLIENT_SECRETS" "$CLIENT_JSON"
+fi
+
+if [ ! -f "$CRED_JSON" ] && [ -f "$CLIENT_JSON" ]; then
+    hass.log.info "Start WebUI for handling oauth2"
+    exec python3 /app/hassio_oauth.py "$CLIENT_JSON" "$CRED_JSON"
+
+elif [ ! -f "$CRED_JSON" ]; then
+    hass.log.error "You need initialize GoogleAssistant with a client secret json!"
+    exit 1
+fi
+
+hass.log.info "Starting Google Assistant Web Server..."
+exec python3 /app/hassio_gassistant.py "$CRED_JSON" < /dev/null

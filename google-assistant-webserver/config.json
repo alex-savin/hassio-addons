@@ -1,0 +1,41 @@
+{
+    "name": "Google Assistant Web Server",
+    "version": "0.0.1",
+    "slug": "google-assistant-webserver",
+    "description": "An Google Assistant Webserver",
+    "url": "https://github.com/alex-savin/hassio-addons/tree/master/google-assistant-webserver",
+    "startup": "system",
+    "boot": "auto",
+    "ports": {
+	"5000/tcp": 5000
+	"9324/tcp": 9324
+    },
+    "docker_api": false,
+    "hassio_api": true,
+    "hassio_role": "default",
+    "homeassistant_api": false,
+    "host_network": false,
+    "host_ipc": false,
+    "host_dbus": false,
+    "host_pid": false,
+    "auto_uart": false,
+    "privileged": [],
+    "full_access": false,
+    "apparmor": false,
+    "audio": false,
+    "gpio": false,
+    "devicetree": false,
+    "stdin": false,
+    "legacy": false,
+    "options": {
+	"client_secrets": "google_assistant.json"
+    },
+    "schema": {
+	"client_secrets": "str"
+    },
+    "timeout": 20,
+    "environment": {
+	"LOG_FORMAT": "{LEVEL}: {MESSAGE}"
+    },
+    "image": "smarthouseint/{arch}-addon-google-assistant-webserver"
+}

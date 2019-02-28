@@ -2,10 +2,14 @@
 channel: stable
 addons:
   live555:
-    repository: alex-savin/hassio-addon-live
+    repository: alex-savin/hassio-addon-live555
     target: live555
-    image: smarthouseint/aircast-{arch}
+    image: smarthouseint/{arch}-addon-live555
   postgres:
     repository: alex-savin/hassio-addon-postgres
     target: postgres
-    image: smarthouseint/airsonos-{arch}
+    image: smarthouseint/{arch}-addon-postgres
+  google-assistant-webserver:
+    repository: alex-savin/hassio-addon-oogle-assistant-webserver
+    target: google-assistant-webserver
+    image: smarthouseint/{arch}-addon-google-assistant-webserver
