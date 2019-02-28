@@ -7,7 +7,7 @@
     "startup": "system",
     "boot": "auto",
     "ports": {
-	"5000/tcp": 5000
+	"5000/tcp": 5000,
 	"9324/tcp": 9324
     },
     "docker_api": false,
