@@ -7,9 +7,7 @@
     "url": "https://github.com/alex-savin/hassio-addons/tree/master/live555",
     "startup": "services",
     "boot": "auto",
-    "map": [
-	"config:rw"
-    ],
+#    "map": ["config:rw"],
     "ports": {
 	"554/tcp": 554,
 	"554/udp": 554
