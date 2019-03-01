@@ -152,4 +152,4 @@ if __name__ == '__main__':
     # Create the text assistant
     assistant = GoogleTextAssistant('en-US', 'HA_GA', 'HA_GA_TEXT_SERVER',
                              True, grpc_channel, DEFAULT_GRPC_DEADLINE)
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0',port='5090')

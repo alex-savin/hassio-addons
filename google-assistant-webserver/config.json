@@ -1,15 +1,16 @@
 {
     "name": "Google Assistant Web Server",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "slug": "google-assistant-webserver",
     "description": "An Google Assistant Webserver",
     "url": "https://github.com/alex-savin/hassio-addons/tree/master/google-assistant-webserver",
-    "startup": "system",
+    "startup": "application",
     "boot": "auto",
     "ports": {
-	"5000/tcp": 5000,
+	"5090/tcp": 5090,
 	"9324/tcp": 9324
     },
+    "webui": "http://[HOST]:[PORT:9324]",
     "docker_api": false,
     "hassio_api": true,
     "hassio_role": "default",

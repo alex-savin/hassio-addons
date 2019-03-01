@@ -19,9 +19,11 @@ RUN \
 	python3-pip \
 	python3-six \
 	python3-pyasn1 \
+	python3-setuptools \
     \
     && pip3 install --upgrade \
-	six
+	six \
+	wheel \
     \
     && pip3 install --upgrade \
 	google-assistant-library \
