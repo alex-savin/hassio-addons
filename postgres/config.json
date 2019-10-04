@@ -3,6 +3,7 @@
     "version": "0.2.0",
     "slug": "postgres",
     "description": "An SQL database server",
+    "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
     "url": "https://github.com/alex-savin/hassio-addons/tree/master/postgres",
     "startup": "system",
     "webui": "[PROTO:ssl]://[HOST]:[PORT:8081]",
