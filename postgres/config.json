@@ -12,7 +12,7 @@
     "panel_icon": "mdi:database",
     "boot": "auto",
     "ports": {
-	"8081/tcp": 8081,"
+	"8081/tcp": 8081,
 	"5432/tcp": 5432
     },
     "ports_description": {
