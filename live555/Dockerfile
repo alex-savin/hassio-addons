@@ -1,4 +1,5 @@
 ARG BUILD_FROM
+#ARG BUILD_FROM=hassioaddons/base:5.0.1
 FROM $BUILD_FROM
 
 # Add env

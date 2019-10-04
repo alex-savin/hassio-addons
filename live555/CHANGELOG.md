@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.1.3
+- Bump Live555 ProxyServer to version 2019.05.29
+
 ## 0.1.2
 - Changed startup option to services
 

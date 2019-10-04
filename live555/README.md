@@ -50,7 +50,17 @@ properly/fully.
 `https://github.com/alex-savin/hassio-addons`.
 
 ## Docker status
+[![Docker Architecture][armhf-arch-shield]][armhf-dockerhub]
+[![Docker Version][armhf-version-shield]][armhf-microbadger]
+[![Docker Layers][armhf-layers-shield]][armhf-microbadger]
+[![Docker Pulls][armhf-pulls-shield]][armhf-dockerhub]
+[![Anchore Image Overview][armhf-anchore-shield]][armhf-anchore]
 
+[![Docker Architecture][aarch64-arch-shield]][aarch64-dockerhub]
+[![Docker Version][aarch64-version-shield]][aarch64-microbadger]
+[![Docker Layers][aarch64-layers-shield]][aarch64-microbadger]
+[![Docker Pulls][aarch64-pulls-shield]][aarch64-dockerhub]
+[![Anchore Image Overview][aarch64-anchore-shield]][aarch64-anchore]
 
 ## Configuration
 
@@ -184,6 +194,24 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+[aarch64-anchore-shield]: https://anchore.io/service/badges/image/267d8f2de202c5c9888df3ba8fd7f18e83a7f88d9090c7e158a01b1d666c1d33
+[aarch64-anchore]: https://anchore.io/image/dockerhub/smarthouseint%2Faarch64-addon-live555%3Alatest
+[aarch64-arch-shield]: https://img.shields.io/badge/architecture-aarch64-blue.svg
+[aarch64-dockerhub]: https://hub.docker.com/r/smarthouseint/aarch64-addon-live555
+[aarch64-layers-shield]: https://images.microbadger.com/badges/image/smarthouseint/aarch64-addon-live555.svg
+[aarch64-microbadger]: https://microbadger.com/images/smarthouseint/aarch64-addon-live555
+[aarch64-pulls-shield]: https://img.shields.io/docker/pulls/smarthouseint/aarch64-addon-live555.svg
+[aarch64-version-shield]: https://images.microbadger.com/badges/version/smarthouseint/aarch64-addon-live555.svg
+
+[armhf-anchore-shield]: https://anchore.io/service/badges/image/dfdc4d4566e3f7c8987bf97016967b362435f5be4a6a1b2a65a60c6280206041
+[armhf-anchore]: https://anchore.io/image/dockerhub/smarthouseint%2Farmhf-addon-live555%3Alatest
+[armhf-arch-shield]: https://img.shields.io/badge/architecture-armhf-blue.svg
+[armhf-dockerhub]: https://hub.docker.com/r/smarthouseint/armhf-addon-live555
+[armhf-layers-shield]: https://images.microbadger.com/badges/image/smarthouseint/armhf-addon-live555.svg
+[armhf-microbadger]: https://microbadger.com/images/smarthouseint/armhf-addon-live555
+[armhf-pulls-shield]: https://img.shields.io/docker/pulls/smarthouseint/armhf-addon-live555.svg
+[armhf-version-shield]: https://images.microbadger.com/badges/version/smarthouseint/armhf-addon-live555.svg
 
 [commits]: https://github.com/alex-savin/hassio-addons/live555/commits/master
 [contributors]: https://github.com/alex-savinhassio-addons/live555/graphs/contributors
