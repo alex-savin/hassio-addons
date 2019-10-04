@@ -1,13 +1,23 @@
 {
-    "name": "Postgres DB",
-    "version": "0.1.2",
+    "name": "PostgreSQL DB",
+    "version": "0.2.0",
     "slug": "postgres",
     "description": "An SQL database server",
     "url": "https://github.com/alex-savin/hassio-addons/tree/master/postgres",
     "startup": "system",
+    "webui": "[PROTO:ssl]://[HOST]:[PORT:8081]",
+    "ingress": true,
+    "ingress_port": 8081,
+    "panel_title": "PostgreSQL",
+    "panel_icon": "mdi:database",
     "boot": "auto",
     "ports": {
+	"8081/tcp": 8081,"
 	"5432/tcp": 5432
+    },
+    "ports_description": {
+	"8081/tcp": "pgWeb",
+	"5432/tcp": "PostgreSQL"
     },
     "docker_api": false,
     "hassio_api": true,

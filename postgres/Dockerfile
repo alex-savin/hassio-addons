@@ -1,6 +1,6 @@
 # vim:set ft=dockerfile:
-
-ARG BUILD_FROM=hassioaddons/base:2.3.0
+ARG BUILD_FROM
+#ARG BUILD_FROM=hassioaddons/base:5.0.1
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -28,9 +28,12 @@ RUN set -ex; \
 # alpine doesn't require explicit locale-file generation
 ENV LANG en_US.utf8
 
-ENV PG_MAJOR 10
-ENV PG_VERSION 10.5
-ENV PG_SHA256 6c8e616c91a45142b85c0aeb1f29ebba4a361309e86469e0fb4617b6a73c4011
+ENV TZ America/New_York
+
+ENV PG_WEB_VERSION 0.11.3
+ENV PG_MAJOR 12
+ENV PG_VERSION 12.0
+ENV PG_SHA256 cda2397215f758b793f741c86be05468257b0e6bcb1a6113882ab5d0df0855c6
 
 RUN set -ex \
     \
@@ -56,6 +59,7 @@ RUN set -ex \
 	flex \
 	gcc \
 #		krb5-dev \
+	linux-headers \
 	libc-dev \
 	libedit-dev \
 	libxml2-dev \
@@ -151,6 +155,11 @@ RUN mkdir -p /var/run/postgresql && chown -R postgres:postgres /var/run/postgres
 ENV PGDATA /data/databases
 RUN mkdir -p "$PGDATA" && chown -R postgres:postgres "$PGDATA" && chmod 777 "$PGDATA" # this 777 will be replaced by 700 at runtime (allows semi-arbitrary "--user" values)
 
+RUN wget -O pgweb_linux_amd64.zip "https://github.com/sosedoff/pgweb/releases/download/v$PG_WEB_VERSION/pgweb_linux_amd64.zip" \
+    && unzip pgweb_linux_amd64.zip \
+    && rm pgweb_linux_amd64.zip \
+    && mv pgweb_linux_amd64 /usr/local/bin/pgweb
+
 # Build arugments
 ARG BUILD_ARCH
 ARG BUILD_DATE
@@ -159,7 +168,7 @@ ARG BUILD_VERSION
 
 # Labels
 LABEL \
-    io.hass.name="Postgres DB" \
+    io.hass.name="PostgreSQL DB" \
     io.hass.description="An SQL database server" \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
@@ -167,7 +176,7 @@ LABEL \
     maintainer="Alex Savin <alex@smarthouse.site>" \
     org.label-schema.description="An SQL database server" \
     org.label-schema.build-date=${BUILD_DATE} \
-    org.label-schema.name="Postgres DB" \
+    org.label-schema.name="PostgreSQL DB" \
     org.label-schema.schema-version="1.0" \
     org.label-schema.url="https://github.com/alex-savin/hassio-addons/tree/master/postgres" \
     org.label-schema.usage="https://github.com/alex-savin/hassio-addons/postgres/tree/master/README.md" \

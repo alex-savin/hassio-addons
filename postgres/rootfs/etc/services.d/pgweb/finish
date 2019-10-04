@@ -1,7 +1,7 @@
 #!/usr/bin/execlineb -S0
 # ==============================================================================
 # SmartHouse's Hass.io Add-ons: Postgres DB
-# Take down the S6 supervision tree when Postgres DB
+# Take down the S6 supervision tree when pgWeb
 # ==============================================================================
 if -n { s6-test $# -ne 0 }
 if -n { s6-test ${1} -eq 256 }
