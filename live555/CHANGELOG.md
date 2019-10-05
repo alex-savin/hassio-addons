@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.1.4
+- Changed S6 service run file
+
 ## 0.1.3
 - Bump Live555 ProxyServer to version 2019.05.29
 
