@@ -1,6 +1,6 @@
 {
     "name": "Live555 RTSP Proxy Server",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "slug": "live555",
     "description": "An RTSP Proxy Server",
     "arch": ["aarch64", "amd64", "armhf", "i386"],
