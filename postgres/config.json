@@ -6,14 +6,14 @@
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
     "url": "https://github.com/alex-savin/hassio-addons/tree/master/postgres",
     "startup": "system",
-    "webui": "http://[HOST]:[PORT:8081]",
+    "webui": "http://[HOST]:[PORT:8099]",
     "ingress": true,
-    "ingress_port": 8081,
+    "ingress_port": 8099,
     "panel_title": "PostgreSQL",
     "panel_icon": "mdi:database",
     "boot": "auto",
     "ports": {
-	"8081/tcp": 8081,
+	"8099/tcp": null,
 	"5432/tcp": 5432
     },
     "ports_description": {
