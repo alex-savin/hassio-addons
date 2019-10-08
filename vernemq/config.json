@@ -39,7 +39,6 @@
     "devicetree": false,
     "stdin": false,
     "legacy": false,
-
     "options": {
 	"ssl": true,
 	"certfile": "fullchain.pem",
@@ -73,7 +72,7 @@
 		    "str"
 		]
 	    }
-	],
+	]
     },
     "timeout": 20,
     "environment": {
