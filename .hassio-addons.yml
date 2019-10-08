@@ -2,18 +2,18 @@
 channel: stable
 addons:
   live555:
-    repository: alex-savin/hassio-addon-live555
+    repository: alex-savin/hassio-addons-live555
     target: live555
     image: smarthouseint/{arch}-addon-live555
   postgres:
-    repository: alex-savin/hassio-addon-postgres
+    repository: alex-savin/hassio-addons-postgres
     target: postgres
     image: smarthouseint/{arch}-addon-postgres
   google-assistant-webserver:
-    repository: alex-savin/hassio-addon-google-assistant-webserver
+    repository: alex-savin/hassio-addons-google-assistant-webserver
     target: google-assistant-webserver
     image: smarthouseint/{arch}-addon-google-assistant-webserver
   vernemq:
-    repository: alex-savin/hassio-addon-vernemq
+    repository: alex-savin/hassio-addons-vernemq
     target: vernemq
     image: smarthouseint/{arch}-addon-vernemq
