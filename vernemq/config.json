@@ -10,7 +10,7 @@
     "ports": {
 	"1883/tcp": 1883,
 	"8883/tcp": 8883,
-	"44053/tcp": 44053"
+	"44053/tcp": 44053
     },
     "ports_description": {
 	"1883/tcp": "MQTT",
@@ -79,5 +79,5 @@
     "environment": {
 	"LOG_FORMAT": "{LEVEL}: {MESSAGE}"
     },
-    "image": "smarthouseint/{arch}-addon-verdemq"
+    "image": "smarthouseint/{arch}-addon-vernemq"
 }
