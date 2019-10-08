@@ -1,6 +1,6 @@
 {
     "name": "PostgreSQL DB",
-    "version": "0.2.4",
+    "version": "0.2.5",
     "slug": "postgres",
     "description": "An SQL database server",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
@@ -69,7 +69,11 @@
 		"database": "str",
 		"grant": "str"
 	    }
-	]
+	],
+	"delete": {
+	    "databases": ["str"],
+	    "roles": ["str"]
+	}
     },
     "timeout": 20,
     "environment": {
