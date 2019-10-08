@@ -1,0 +1,83 @@
+{
+    "name": "VerneMQ",
+    "version": "0.0.1",
+    "slug": "vernemq",
+    "description": "An MQTT server",
+    "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
+    "url": "https://github.com/alex-savin/hassio-addons/tree/master/vernemq",
+    "startup": "services",
+    "boot": "auto",
+    "ports": {
+	"1883/tcp": 1883,
+	"8883/tcp": 8883,
+	"44053/tcp": 44053"
+    },
+    "ports_description": {
+	"1883/tcp": "MQTT",
+	"8883/tcp": "MQTT WebSockets",
+	"44053/tcp": "VerneMQ Message Distribution"
+    },
+    "map": [
+	"share",
+	"ssl",
+	"config"
+    ],
+    "docker_api": false,
+    "hassio_api": true,
+    "hassio_role": "default",
+    "homeassistant_api": false,
+    "host_network": false,
+    "host_ipc": false,
+    "host_dbus": false,
+    "host_pid": false,
+    "auto_uart": false,
+    "privileged": [],
+    "full_access": false,
+    "apparmor": false,
+    "audio": false,
+    "gpio": false,
+    "devicetree": false,
+    "stdin": false,
+    "legacy": false,
+
+    "options": {
+	"ssl": true,
+	"certfile": "fullchain.pem",
+	"keyfile": "privkey.pem",
+	"broker": true,
+	"allow_anonymous": false,
+	"mqttusers": [
+	    {
+		"username": "",
+		"password": "",
+		"readonly": true,
+		"topics": [
+		    "#"
+		]
+	    }
+	]
+    },
+    "schema": {
+	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
+	"ssl": "bool",
+	"certfile": "str",
+	"keyfile": "str",
+	"broker": "bool",
+	"allow_anonymous": "bool",
+	"mqttusers": [
+	    {
+		"username": "str",
+		"password": "str",
+		"readonly": "bool",
+		"topics": [
+		    "str"
+		]
+	    }
+	],
+    },
+    "timeout": 20,
+    "environment": {
+	"LOG_FORMAT": "{LEVEL}: {MESSAGE}"
+    },
+    "image": "smarthouseint/{arch}-addon-verdemq"
+}

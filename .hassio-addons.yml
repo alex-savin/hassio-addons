@@ -13,3 +13,7 @@ addons:
     repository: alex-savin/hassio-addon-google-assistant-webserver
     target: google-assistant-webserver
     image: smarthouseint/{arch}-addon-google-assistant-webserver
+  vernemq:
+    repository: alex-savin/hassio-addon-vernemq
+    target: vernemq
+    image: smarthouseint/{arch}-addon-vernemq

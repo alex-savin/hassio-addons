@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.2.3
+- Fixed bashio support for based image
+
 ## 0.2.1
 - Changed S6 service run file
 
