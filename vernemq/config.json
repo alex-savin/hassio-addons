@@ -1,6 +1,6 @@
 {
     "name": "VerneMQ",
-    "version": "0.0.12",
+    "version": "0.0.13",
     "slug": "vernemq",
     "description": "An MQTT server",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
@@ -27,7 +27,7 @@
     "hassio_api": true,
     "hassio_role": "default",
     "homeassistant_api": false,
-    "host_network": true,
+    "host_network": false,
     "host_ipc": false,
     "host_dbus": false,
     "host_pid": false,
@@ -41,6 +41,7 @@
     "stdin": false,
     "legacy": false,
     "options": {
+		"log_level": "info",
 		"ssl": true,
 		"certfile": "fullchain.pem",
 		"keyfile": "privkey.pem",
