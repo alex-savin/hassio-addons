@@ -1,6 +1,6 @@
 {
     "name": "VerneMQ",
-    "version": "0.0.5",
+    "version": "0.0.1",
     "slug": "vernemq",
     "description": "An MQTT server",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
@@ -8,25 +8,26 @@
     "startup": "services",
     "boot": "auto",
     "ports": {
-	"1883/tcp": 1883,
-	"8883/tcp": 8883,
-	"44053/tcp": 44053
+		"1883/tcp": 1883,
+		"8883/tcp": 8883,
+		"9001/tcp": 9001,
+		"9002/tcp": 9002
     },
     "ports_description": {
-	"1883/tcp": "MQTT",
-	"8883/tcp": "MQTT WebSockets",
-	"44053/tcp": "VerneMQ Message Distribution"
+		"1883/tcp": "MQTT",
+		"8883/tcp": "MQTT SSL",
+		"9001/tcp": "WebSockets",
+		"9002/tcp": "WebSocket SSL"
     },
     "map": [
 	"share",
-	"ssl",
-	"config"
+	"ssl"
     ],
     "docker_api": false,
     "hassio_api": true,
     "hassio_role": "default",
     "homeassistant_api": false,
-    "host_network": false,
+    "host_network": true,
     "host_ipc": false,
     "host_dbus": false,
     "host_pid": false,
@@ -40,39 +41,43 @@
     "stdin": false,
     "legacy": false,
     "options": {
-	"ssl": true,
-	"certfile": "fullchain.pem",
-	"keyfile": "privkey.pem",
-	"broker": true,
-	"allow_anonymous": false,
-	"mqttusers": [
-	    {
-		"username": "",
-		"password": "",
-		"readonly": true,
-		"topics": [
-		    "#"
+		"ssl": true,
+		"certfile": "fullchain.pem",
+		"keyfile": "privkey.pem",
+		"broker": true,
+		"vernemq": {
+			"node_name": "",
+			"discovery_node": ""
+		},
+		"allow_anonymous": false,
+		"mqttusers": [
+	    	{
+				"username": "",
+				"password": "",
+				"readonly": true,
+				"topics": [
+		    		"#"
+				]
+	    	}
 		]
-	    }
-	]
     },
     "schema": {
-	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
-	"ssl": "bool",
-	"certfile": "str",
-	"keyfile": "str",
-	"broker": "bool",
-	"allow_anonymous": "bool",
-	"mqttusers": [
-	    {
-		"username": "str",
-		"password": "str",
-		"readonly": "bool",
-		"topics": [
-		    "str"
+		"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
+		"ssl": "bool",
+		"certfile": "str",
+		"keyfile": "str",
+		"broker": "bool",
+		"allow_anonymous": "bool",
+		"mqttusers": [
+	    	{
+				"username": "str",
+				"password": "str",
+				"readonly": "bool",
+				"topics": [
+		    		"str"
+				]
+	    	}
 		]
-	    }
-	]
     },
     "timeout": 20,
     "environment": {
