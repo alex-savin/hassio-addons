@@ -8,16 +8,16 @@
     "startup": "services",
     "boot": "auto",
     "ports": {
-		"1883/tcp": 1883,
-		"8883/tcp": 8883,
-		"9001/tcp": 9001,
-		"9002/tcp": 9002
+	"1883/tcp": 1883,
+	"8883/tcp": 8883,
+	"9001/tcp": 9001,
+	"9002/tcp": 9002
     },
     "ports_description": {
-		"1883/tcp": "MQTT",
-		"8883/tcp": "MQTT SSL",
-		"9001/tcp": "WebSockets",
-		"9002/tcp": "WebSocket SSL"
+	"1883/tcp": "MQTT",
+	"8883/tcp": "MQTT SSL",
+	"9001/tcp": "WebSockets",
+	"9002/tcp": "WebSocket SSL"
     },
     "map": [
 	"share",
@@ -41,44 +41,48 @@
     "stdin": false,
     "legacy": false,
     "options": {
-		"log_level": "info",
-		"ssl": true,
-		"certfile": "fullchain.pem",
-		"keyfile": "privkey.pem",
-		"broker": true,
-		"vernemq": {
-			"node_name": "",
-			"discovery_node": ""
-		},
-		"allow_anonymous": false,
-		"mqttusers": [
-	    	{
-				"username": "",
-				"password": "",
-				"readonly": true,
-				"topics": [
-		    		"#"
-				]
-	    	}
+	"log_level": "info",
+	"ssl": true,
+	"certfile": "fullchain.pem",
+	"keyfile": "privkey.pem",
+	"broker": true,
+	"vernemq": {
+	    "node_name": "",
+	    "discovery_node": ""
+	},
+	"allow_anonymous": false,
+	"mqttusers": [
+	    {
+		"username": "",
+		"password": "",
+		"readonly": true,
+		"topics": [
+		    "#"
 		]
+	    }
+	]
     },
     "schema": {
-		"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
-		"ssl": "bool",
-		"certfile": "str",
-		"keyfile": "str",
-		"broker": "bool",
-		"allow_anonymous": "bool",
-		"mqttusers": [
-	    	{
-				"username": "str",
-				"password": "str",
-				"readonly": "bool",
-				"topics": [
-		    		"str"
-				]
-	    	}
-		]
+	    "log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
+	    "ssl": "bool",
+	    "certfile": "str",
+	    "keyfile": "str",
+	    "broker": "bool",
+	    "allow_anonymous": "bool",
+	    "vernemq": {
+		"node_name": "str",
+		"discovery_node": "str"
+	    }
+	    "mqttusers": [
+		{
+		    "username": "str",
+		    "password": "str",
+		    "readonly": "bool",
+		    "topics": [
+			"str"
+		    ]
+		}
+	]
     },
     "timeout": 20,
     "environment": {
