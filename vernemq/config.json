@@ -1,6 +1,6 @@
 {
     "name": "VerneMQ",
-    "version": "0.0.16",
+    "version": "0.0.17",
     "slug": "vernemq",
     "description": "An MQTT server",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
