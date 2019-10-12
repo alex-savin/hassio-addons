@@ -72,7 +72,7 @@
 	    "vernemq": {
 		"node_name": "str",
 		"discovery_node": "str"
-	    }
+	    },
 	    "mqttusers": [
 		{
 		    "username": "str",
