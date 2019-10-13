@@ -1,6 +1,6 @@
 {
     "name": "VerneMQ",
-    "version": "0.0.17",
+    "version": "0.0.18",
     "slug": "vernemq",
     "description": "An MQTT server",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
@@ -63,25 +63,25 @@
 	]
     },
     "schema": {
-	    "log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
-	    "ssl": "bool",
-	    "certfile": "str",
-	    "keyfile": "str",
-	    "broker": "bool",
-	    "allow_anonymous": "bool",
-	    "vernemq": {
-		"node_name": "str",
-		"discovery_node": "str"
-	    },
-	    "mqttusers": [
-		{
-		    "username": "str",
-		    "password": "str",
-		    "readonly": "bool",
-		    "topics": [
-			"str"
-		    ]
-		}
+	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
+	"ssl": "bool",
+	"certfile": "str",
+	"keyfile": "str",
+	"broker": "bool",
+	"allow_anonymous": "bool",
+	"vernemq": {
+	    "node_name": "str",
+	    "discovery_node": "str"
+	},
+	"mqttusers": [
+	    {
+		"username": "str",
+		"password": "str",
+		"readonly": "bool",
+		"topics": [
+		    "str"
+		]
+	    }
 	]
     },
     "timeout": 20,
