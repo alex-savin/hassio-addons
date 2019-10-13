@@ -1,6 +1,6 @@
 {
     "name": "VerneMQ",
-    "version": "0.0.31",
+    "version": "0.0.32",
     "slug": "vernemq",
     "description": "An MQTT server",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
@@ -54,7 +54,7 @@
 	    {
 		"username": "",
 		"password": "",
-		"readonly": false,
+		"permission": "",
 		"topics": [
 		    "#"
 		]
@@ -75,7 +75,7 @@
 	    {
 		"username": "str",
 		"password": "str",
-		"readonly": "bool",
+		"permission": "match(^(read|write)$)?",
 		"topics": [
 		    "str"
 		]
