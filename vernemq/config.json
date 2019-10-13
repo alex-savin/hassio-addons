@@ -1,6 +1,6 @@
 {
     "name": "VerneMQ",
-    "version": "0.0.25",
+    "version": "0.0.26",
     "slug": "vernemq",
     "description": "An MQTT server",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
@@ -45,7 +45,6 @@
 	"ssl": true,
 	"certfile": "fullchain.pem",
 	"keyfile": "privkey.pem",
-	"broker": true,
 	"vernemq": {
 	    "node_name": "",
 	    "discovery_node": ""
@@ -55,7 +54,7 @@
 	    {
 		"username": "",
 		"password": "",
-		"readonly": true,
+		"readonly": false,
 		"topics": [
 		    "#"
 		]
@@ -67,7 +66,6 @@
 	"ssl": "bool",
 	"certfile": "str",
 	"keyfile": "str",
-	"broker": "bool",
 	"allow_anonymous": "bool",
 	"vernemq": {
 	    "node_name": "str",
