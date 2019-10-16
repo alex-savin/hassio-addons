@@ -20,7 +20,6 @@
     "host_ipc": false,
     "host_dbus": false,
     "host_pid": false,
-    "auto_uart": false,
     "privileged": [],
     "full_access": false,
     "apparmor": false,
@@ -31,41 +30,49 @@
     "legacy": false,
     "options": {
 	"log_level": "info",
-	"vernemq": {
-	    "node_name": "",
-	    "discovery_node": ""
+	"meters": {
+	    "gas": [
+		""
+	    ],
+	    "water": [
+		""
+	    ]
+	    "energy": [
+		""
+	    ],
 	},
-	"mqttusers": [
-	    {
-		"username": "",
-		"password": "",
-		"permission": "",
-		"topics": [
-		    "#"
-		]
-	    }
-	]
+	"mqtt": {
+	    "host": "",
+	    "port": "",
+	    "username": "",
+	    "password": "",
+	    "topic": ""
+	}
     },
     "schema": {
 	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
-	"vernemq": {
-	    "node_name": "str",
-	    "discovery_node": "str"
+	"meters": {
+	    "gas": [
+		"int"
+	    ],
+	    "water": [
+		"int"
+	    ],
+	    "energy": [
+		"int"
+	    ]
 	},
-	"mqttusers": [
-	    {
-		"username": "str",
-		"password": "str",
-		"permission": "match(^(read|write)$)?",
-		"topics": [
-		    "str"
-		]
-	    }
-	]
+	"mqtt": {
+	    "host": "str",
+	    "port": "int",
+	    "username": "str",
+	    "password": "str",
+	    "topics": "str"
+	}
     },
     "timeout": 20,
     "environment": {
 	"LOG_FORMAT": "{LEVEL}: {MESSAGE}"
     },
-    "image": "smarthouseint/{arch}-addon-vernemq"
+    "image": "smarthouseint/{arch}-addon-rtlamr"
 }
