@@ -1,28 +1,17 @@
 {
-    "name": "VerneMQ",
-    "version": "0.0.33",
-    "slug": "vernemq",
-    "description": "An MQTT server",
+    "name": "RTLAMR",
+    "version": "0.0.1",
+    "slug": "rtlamr",
+    "description": "An RTLAMR Smart Meter reader",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
-    "url": "https://github.com/alex-savin/hassio-addons/tree/master/vernemq",
-    "startup": "services",
+    "url": "https://github.com/alex-savin/hassio-addons/tree/master/rtlamr",
+    "startup": "before",
     "boot": "auto",
-    "ports": {
-	"1883/tcp": 1883,
-	"8883/tcp": 8883,
-	"9001/tcp": 9001,
-	"9002/tcp": 9002
-    },
-    "ports_description": {
-	"1883/tcp": "MQTT",
-	"8883/tcp": "MQTT SSL",
-	"9001/tcp": "WebSockets",
-	"9002/tcp": "WebSocket SSL"
-    },
     "map": [
 	"share",
 	"ssl"
-    ],
+    ]
+    "auto_uart": true,
     "docker_api": false,
     "hassio_api": true,
     "hassio_role": "default",
@@ -42,14 +31,10 @@
     "legacy": false,
     "options": {
 	"log_level": "info",
-	"ssl": true,
-	"certfile": "fullchain.pem",
-	"keyfile": "privkey.pem",
 	"vernemq": {
 	    "node_name": "",
 	    "discovery_node": ""
 	},
-	"allow_anonymous": false,
 	"mqttusers": [
 	    {
 		"username": "",
@@ -63,10 +48,6 @@
     },
     "schema": {
 	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
-	"ssl": "bool",
-	"certfile": "str",
-	"keyfile": "str",
-	"allow_anonymous": "bool",
 	"vernemq": {
 	    "node_name": "str",
 	    "discovery_node": "str"
