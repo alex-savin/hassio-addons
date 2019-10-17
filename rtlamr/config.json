@@ -1,6 +1,6 @@
 {
     "name": "RTLAMR",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "slug": "rtlamr",
     "description": "An RTLAMR Smart Meter reader",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
@@ -52,7 +52,13 @@
     "schema": {
 	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
 	"meters": {
-	    "match(^(gas|water|energy)$)?": [
+	    "gas": [
+		"int?"
+	    ],
+	    "water": [
+		"int?"
+	    ],
+	    "energy": [
 		"int?"
 	    ]
 	},
