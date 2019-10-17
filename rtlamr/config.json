@@ -1,6 +1,6 @@
 {
     "name": "RTLAMR",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "slug": "rtlamr",
     "description": "An RTLAMR Smart Meter reader",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
@@ -20,7 +20,17 @@
     "host_ipc": false,
     "host_dbus": false,
     "host_pid": false,
-    "privileged": [],
+    "privileged": [
+	"NET_ADMIN",
+	"SYS_ADMIN",
+	"SYS_RAWIO",
+	"SYS_TIME",
+	"SYS_NICE",
+	"SYS_RESOURCE",
+	"SYS_PTRACE",
+	"SYS_MODULE",
+	"DAC_READ_SEARCH"
+    ],
     "full_access": false,
     "apparmor": false,
     "audio": false,
