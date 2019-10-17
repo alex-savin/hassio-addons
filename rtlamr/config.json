@@ -1,6 +1,6 @@
 {
     "name": "RTLAMR",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "slug": "rtlamr",
     "description": "An RTLAMR Smart Meter reader",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
@@ -26,7 +26,7 @@
     "apparmor": false,
     "audio": false,
     "gpio": false,
-    "devicetree": true,
+    "devicetree": false,
     "stdin": false,
     "legacy": false,
     "options": {
