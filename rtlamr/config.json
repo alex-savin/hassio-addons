@@ -1,6 +1,6 @@
 {
     "name": "RTLAMR",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "slug": "rtlamr",
     "description": "An RTLAMR Smart Meter reader",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
@@ -8,8 +8,7 @@
     "startup": "before",
     "boot": "auto",
     "map": [
-	"share",
-	"ssl"
+	"share"
     ],
     "auto_uart": true,
     "docker_api": false,
@@ -18,15 +17,16 @@
     "homeassistant_api": false,
     "host_network": false,
     "host_ipc": false,
-    "host_dbus": false,
+    "host_dbus": true,
     "host_pid": false,
     "privileged": [],
     "udev": true,
     "full_access": true,
+    "kernel_modules": true,
     "apparmor": false,
     "audio": false,
     "gpio": false,
-    "devicetree": false,
+    "devicetree": true,
     "stdin": false,
     "legacy": false,
     "options": {
