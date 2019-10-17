@@ -52,14 +52,8 @@
     "schema": {
 	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
 	"meters": {
-	    "gas": [
-		"int"
-	    ],
-	    "water": [
-		"int"
-	    ],
-	    "energy": [
-		"int"
+	    "match(^(gas|water|energy)$)?": [
+		"int?"
 	    ]
 	},
 	"mqtt": {
@@ -67,7 +61,7 @@
 	    "port": "int",
 	    "username": "str",
 	    "password": "str",
-	    "topics": "str"
+	    "topic": "str"
 	}
     },
     "timeout": 20,
