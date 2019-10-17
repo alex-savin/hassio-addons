@@ -1,6 +1,6 @@
 {
     "name": "VerneMQ",
-    "version": "0.0.33",
+    "version": "0.0.34",
     "slug": "vernemq",
     "description": "An MQTT server",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
@@ -10,14 +10,14 @@
     "ports": {
 	"1883/tcp": 1883,
 	"8883/tcp": 8883,
-	"9001/tcp": 9001,
-	"9002/tcp": 9002
+	"8083/tcp": 8083,
+	"8084/tcp": 8084
     },
     "ports_description": {
 	"1883/tcp": "MQTT",
-	"8883/tcp": "MQTT SSL",
-	"9001/tcp": "WebSockets",
-	"9002/tcp": "WebSocket SSL"
+	"8883/tcp": "MQTT/SSL",
+	"8083/tcp": "WebSockets",
+	"8084/tcp": "WebSockets/SSL"
     },
     "map": [
 	"share",
@@ -31,7 +31,7 @@
     "host_ipc": false,
     "host_dbus": false,
     "host_pid": false,
-    "auto_uart": false,
+    "auto_uart": true,
     "privileged": [],
     "full_access": false,
     "apparmor": false,
@@ -43,6 +43,8 @@
     "options": {
 	"log_level": "info",
 	"ssl": true,
+	"wss": true,
+	"cafile": "ca.pem",
 	"certfile": "fullchain.pem",
 	"keyfile": "privkey.pem",
 	"vernemq": {
@@ -64,6 +66,8 @@
     "schema": {
 	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
 	"ssl": "bool",
+	"wss": "bool",
+	"cafile": "str",
 	"certfile": "str",
 	"keyfile": "str",
 	"allow_anonymous": "bool",
