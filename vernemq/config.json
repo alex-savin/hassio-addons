@@ -1,6 +1,6 @@
 {
     "name": "VerneMQ",
-    "version": "0.0.34",
+    "version": "0.0.35",
     "slug": "vernemq",
     "description": "An MQTT server",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
@@ -42,47 +42,55 @@
     "legacy": false,
     "options": {
 	"log_level": "info",
+	"network_interface": "eth0",
 	"ssl": true,
-	"wss": true,
 	"cafile": "ca.pem",
 	"certfile": "fullchain.pem",
 	"keyfile": "privkey.pem",
 	"vernemq": {
+	    "allow_anonymous": false,
+	    "websockets": false,
 	    "node_name": "",
 	    "discovery_node": ""
 	},
-	"allow_anonymous": false,
-	"mqttusers": [
+	"credentials": [
 	    {
 		"username": "",
 		"password": "",
-		"permission": "",
-		"topics": [
-		    "#"
-		]
+	    }
+	],
+	"permissions": [
+	    {
+		"username": "",
+		"topic": "",
+		"permission": "write"
 	    }
 	]
     },
     "schema": {
 	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
+	"network_interface": "str?",
 	"ssl": "bool",
-	"wss": "bool",
-	"cafile": "str",
-	"certfile": "str",
-	"keyfile": "str",
-	"allow_anonymous": "bool",
+	"cafile": "str?",
+	"certfile": "str?",
+	"keyfile": "str?",
 	"vernemq": {
-	    "node_name": "str",
-	    "discovery_node": "str"
+	    "allow_anonymous": "bool",
+	    "websockets": "boot",
+	    "node_name": "str?",
+	    "discovery_node": "str?"
 	},
-	"mqttusers": [
+	"credentials": [
+	    {
+		"username": "str?",
+		"password": "str?"
+	    }
+	],
+	"permissions": [
 	    {
 		"username": "str",
-		"password": "str",
-		"permission": "match(^(read|write)$)?",
-		"topics": [
-		    "str"
-		]
+		"topic": "str",
+		"permission": "match(^(read|write)$)"
 	    }
 	]
     },

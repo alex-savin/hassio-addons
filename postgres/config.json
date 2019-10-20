@@ -1,6 +1,6 @@
 {
     "name": "PostgreSQL DB",
-    "version": "0.2.9",
+    "version": "0.2.10",
     "slug": "postgres",
     "description": "An SQL database server",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
@@ -40,17 +40,17 @@
     "options": {
 	"log_level": "info",
 	"databases": ["homeassistant"],
-	"logins": [
+	"roles": [
 	    {
 		"username": "hassio",
-		"password": null
+		"password": "hassio"
 	    }
 	],
-	"rights": [
+	"privileges": [
 	    {
 		"username": "hassio",
 		"database": "homeassistant",
-		"grant": "ALL PRIVILEGES ON"
+		"grant": "ALL PRIVILEGES"
 	    }
 	],
 	"delete": {
@@ -61,22 +61,22 @@
     "schema": {
 	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)",
 	"databases": ["str"],
-	"logins": [
+	"roles": [
 	    {
 		"username": "str",
 		"password": "str"
 	    }
 	],
-	"rights": [
+	"privileges": [
 	    {
 		"username": "str",
 		"database": "str",
-		"grant": "str"
+		"grant": "match(^(SELECT|INSERT|UPDATE|DELETE|RULE|ALL PRIVILEGES)$)"
 	    }
 	],
 	"delete": {
-	    "databases": ["str"],
-	    "roles": ["str"]
+	    "databases": ["str?"],
+	    "roles": ["str?"]
 	}
     },
     "timeout": 20,
