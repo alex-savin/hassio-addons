@@ -1,6 +1,6 @@
 {
     "name": "PostgreSQL DB",
-    "version": "0.2.31",
+    "version": "0.2.32",
     "slug": "postgres",
     "description": "An SQL database server",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
