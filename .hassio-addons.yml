@@ -17,3 +17,7 @@ addons:
     repository: alex-savin/hassio-addons-vernemq
     target: vernemq
     image: smarthouseint/{arch}-addon-vernemq
+  zwave2mqtt:
+    repository: alex-savin/hassio-addons-zwave2mqtt
+    target: zwave2mqtt
+    image: smarthouseint/{arch}-addon-zwave2mqtt
