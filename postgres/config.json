@@ -11,6 +11,7 @@
     "ingress_port": 8099,
     "panel_title": "PostgreSQL",
     "panel_icon": "mdi:database",
+    "panel_admin": true,
     "boot": "auto",
     "ports": {
 	"8099/tcp": null,

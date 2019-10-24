@@ -1,6 +1,6 @@
 {
     "name": "RTLAMR",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "slug": "rtlamr",
     "description": "An RTLAMR Smart Meter reader",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
@@ -9,6 +9,9 @@
     "boot": "auto",
     "map": [
 	"share"
+    ],
+    "devices": [
+	"/dev/bus/usb:/dev/bus/usb:rwm"
     ],
     "auto_uart": true,
     "docker_api": false,
