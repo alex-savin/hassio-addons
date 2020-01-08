@@ -1,6 +1,10 @@
 ---
 channel: stable
 addons:
+  appdaemon3:
+    repository: alex-savin/hassio-addons-appdaemon3
+    target: appdaemon3
+    image: smarthouseint/hassio-addons-appdaemon3
   live555:
     repository: alex-savin/hassio-addons-live555
     target: live555
