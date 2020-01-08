@@ -76,7 +76,7 @@
 	"keyfile": "str?",
 	"vernemq": {
 	    "allow_anonymous": "bool",
-	    "websockets": "boot",
+	    "websockets": "bool",
 	    "node_name": "str?",
 	    "discovery_node": "str?"
 	},
