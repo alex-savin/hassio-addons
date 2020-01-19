@@ -1,6 +1,6 @@
 {
     "name": "RTLAMR",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "slug": "rtlamr",
     "description": "An RTLAMR Smart Meter reader",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
