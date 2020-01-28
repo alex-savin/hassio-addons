@@ -30,5 +30,6 @@
     "python_packages": ["str"],
     "init_commands": ["str"],
     "timezone": "str?"
-  }
+  },
+  "image": "smarthouseint/{arch}-addon-appdaemon4"
 }
