@@ -21,7 +21,8 @@
   "options": {
     "system_packages": [],
     "python_packages": [],
-    "init_commands": []
+    "init_commands": [],
+    "timezone": ""
   },
   "schema": {
     "log_level": "list(trace|debug|info|notice|warning|error|fatal)?",
