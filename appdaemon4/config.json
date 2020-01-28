@@ -27,7 +27,7 @@
     "log_level": "list(trace|debug|info|notice|warning|error|fatal)?",
     "system_packages": ["str"],
     "python_packages": ["str"],
-    "init_commands": ["str"]
-  },
-  "image": "smarthouseint/{arch}-addon-appdaemon4"
+    "init_commands": ["str"],
+    "timezone": "str?",
+  }
 }
