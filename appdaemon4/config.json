@@ -29,6 +29,6 @@
     "system_packages": ["str"],
     "python_packages": ["str"],
     "init_commands": ["str"],
-    "timezone": "str?",
+    "timezone": "str?"
   }
 }
