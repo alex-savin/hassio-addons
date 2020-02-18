@@ -25,7 +25,3 @@ addons:
     repository: alex-savin/hassio-addons-zwave2mqtt
     target: zwave2mqtt
     image: smarthouseint/{arch}-addon-zwave2mqtt
-  zwave2mqtt-dev:
-    repository: alex-savin/hassio-addons-zwave2mqtt
-    target: zwave2mqtt-dev
-    image: smarthouseint/{arch}-addon-zwave2mqtt
