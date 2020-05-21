@@ -1,7 +1,11 @@
 # Changelog
 
+## 0.1.4
+- Bumped ZWave2MQTT to v3.2.1
+- Bumped OpenZWave to v1.6.1123
+
 ## 0.1.3
-- Bumped Alipne to v3.11.6
+- Bumped Alpine to v3.11.6
 - Bumped Bashio to v.0.9.0
 - Bumped ZWave2MQTT to v3.1.0
 - Bumped OpenZWave to v1.6.1115
