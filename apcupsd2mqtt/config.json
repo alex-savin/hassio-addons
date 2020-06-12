@@ -1,0 +1,69 @@
+{
+    "name": "Apcupsd2MQTT",
+    "version": "0.0.1",
+    "slug": "apcupsd2mqtt",
+    "description": "An HTTP Apcupsd to MQTT Iterator",
+    "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
+    "url": "https://github.com/alex-savin/hassio-addons/tree/master/apcupsd2mqtt",
+    "startup": "services",
+    "boot": "auto",
+    "docker_api": false,
+    "hassio_api": true,
+    "hassio_role": "default",
+    "homeassistant_api": false,
+    "host_network": false,
+    "host_ipc": false,
+    "host_dbus": false,
+    "host_pid": false,
+    "auto_uart": false,
+    "privileged": [],
+    "full_access": false,
+    "apparmor": false,
+    "audio": false,
+    "gpio": false,
+    "devicetree": false,
+    "stdin": false,
+    "legacy": false,
+
+    "options": {
+	"log_level": "info",
+	"enable_auto_discovery": false,
+	"update": 5,
+	"mqtt": {
+	    "host": "",
+	    "port": 1883,
+	    "username": "",
+	    "password": "",
+	    "topic": ""
+	},
+	"upses": [
+		{
+		"name": "",
+		"url": ""
+	    }
+	],
+    },
+    "schema": {
+	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
+	"enable_auto_discovery": "bool",
+	"update": "int"
+	"mqtt": {
+	    "host": "str",
+	    "port": "int",
+	    "username": "str",
+	    "password": "str",
+	    "topic": "str"
+	},
+	"upses": [
+	    {
+		"name": "str",
+		"url": "str"
+	    }
+	],
+    },
+    "timeout": 20,
+    "environment": {
+	"LOG_FORMAT": "{LEVEL}: {MESSAGE}"
+    },
+    "image": "smarthouseint/{arch}-addon-apcupsd2mqtt"
+}

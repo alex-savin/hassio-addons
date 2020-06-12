@@ -1,27 +1,31 @@
 ---
 channel: stable
 addons:
-  appdaemon3:
-    repository: alex-savin/hassio-addons-appdaemon3
-    target: appdaemon3
-    image: smarthouseint/hassio-addons-appdaemon3
+  apcupsd2mqtt:
+    repository: alex-savin/addon-apcupsd2mqtt
+    target: apcupsd2mqtt
+    image: smarthouseint/{arch}-addon-apcupsd2mqtt
+  google-assistant-webserver:
+    repository: alex-savin/addon-google-assistant-webserver
+    target: google-assistant-webserver
+    image: smarthouseint/{arch}-addon-google-assistant-webserver
   live555:
-    repository: alex-savin/hassio-addons-live555
+    repository: alex-savin/addon-live555
     target: live555
     image: smarthouseint/{arch}-addon-live555
   postgres:
-    repository: alex-savin/hassio-addons-postgres
+    repository: alex-savin/addon-postgres
     target: postgres
     image: smarthouseint/{arch}-addon-postgres
-  google-assistant-webserver:
-    repository: alex-savin/hassio-addons-google-assistant-webserver
-    target: google-assistant-webserver
-    image: smarthouseint/{arch}-addon-google-assistant-webserver
+  rtlamr:
+    repository: alex-savin/addon-rtlamr
+    target: rtlamr
+    image: smarthouseint/{arch}-addon-rtlamr
   vernemq:
-    repository: alex-savin/hassio-addons-vernemq
+    repository: alex-savin/addon-vernemq
     target: vernemq
     image: smarthouseint/{arch}-addon-vernemq
   zwave2mqtt:
-    repository: alex-savin/hassio-addons-zwave2mqtt
+    repository: alex-savin/addon-zwave2mqtt
     target: zwave2mqtt
     image: smarthouseint/{arch}-addon-zwave2mqtt
