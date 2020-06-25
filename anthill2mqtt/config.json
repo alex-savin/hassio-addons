@@ -40,12 +40,12 @@
 		"name": "",
 		"url": ""
 	    }
-	],
+	]
     },
     "schema": {
 	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
 	"enable_auto_discovery": "bool",
-	"update": "int"
+	"update": "int",
 	"mqtt": {
 	    "host": "str",
 	    "port": "int",
@@ -58,7 +58,7 @@
 		"name": "str",
 		"url": "str"
 	    }
-	],
+	]
     },
     "timeout": 20,
     "environment": {
