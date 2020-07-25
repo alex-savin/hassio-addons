@@ -21,6 +21,10 @@ addons:
     repository: alex-savin/addon-postgres
     target: postgres
     image: smarthouseint/{arch}-addon-postgres
+  rtl4332mqtt:
+    repository: alex-savin/addon-rtl4332mqtt
+    target: rtl4332mqtt
+    image: smarthouseint/{arch}-addon-rtl4332mqtt
   rtlamr:
     repository: alex-savin/addon-rtlamr
     target: rtlamr

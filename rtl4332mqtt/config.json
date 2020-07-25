@@ -1,0 +1,68 @@
+{
+    "name": "RTL4332MQTT",
+    "version": "0.0.1",
+    "slug": "rtl4332mqtt",
+    "description": "An RTL433 To MQTT Bridge",
+    "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
+    "url": "https://github.com/alex-savin/hassio-addons/tree/master/rtl4332mqtt",
+    "startup": "before",
+    "boot": "auto",
+    "map": [
+	"share"
+    ],
+    "devices": [
+	"/dev/bus/usb:/dev/bus/usb:rwm"
+    ],
+    "auto_uart": true,
+    "docker_api": false,
+    "hassio_api": true,
+    "hassio_role": "default",
+    "homeassistant_api": false,
+    "host_network": false,
+    "host_ipc": false,
+    "host_dbus": true,
+    "host_pid": false,
+    "privileged": [],
+    "udev": true,
+    "full_access": true,
+    "kernel_modules": true,
+    "apparmor": false,
+    "audio": false,
+    "gpio": false,
+    "devicetree": false,
+    "stdin": false,
+    "legacy": false,
+    "options":
+    {
+	"log_level": "info",
+	"enable_auto_discovery": false,
+	"mqtt_host": "hassio.local",
+	"mqtt_user": "",
+	"mqtt_password": "",
+	"mqtt_topic": "homeassistant/#",
+	"device_id": 1,
+	"protocol": 40,
+	"frequency": 319500000,
+	"gain": 60,
+	"frequency_offset": 350
+    },
+    "schema":
+    {
+	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
+	"enable_auto_discovery": "bool",
+	"mqtt_host": "str",
+	"mqtt_user": "str",
+	"mqtt_password": "str",
+	"mqtt_topic": "str",
+	"device_id": "int",
+	"protocol": "int",
+	"frequency": "int",
+	"gain": "int",
+	"frequency_offset": "int"
+    },
+    "timeout": 20,
+    "environment": {
+	"LOG_FORMAT": "{LEVEL}: {MESSAGE}"
+    },
+    "image": "smarthouseint/{arch}-addon-rtl4332mqtt"
+}

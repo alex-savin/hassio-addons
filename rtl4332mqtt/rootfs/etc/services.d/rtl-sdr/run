@@ -1,0 +1,9 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# SmartHouse Hass.io Add-ons: RTL-SDR Server
+# Runs the RTL-SDR Server
+# ==============================================================================
+
+# Run the RTL-SDR Server
+bashio::log.info "Starting RTL-SDR Server..."
+exec /usr/local/bin/rtl_tcp -a 0.0.0.0
