@@ -13,63 +13,32 @@ RUN \
     \
     && apk update \
     && apk add --no-cache --virtual .build-dependencies \
-	alpine-sdk \
-	cmake \
+	alpine-sdk=1.0-r0 \
+	cmake=3.17.2-r0 \
 	git \
-#	libacl=2.2.53-r0 \
-#	libbz2=1.0.8-r1 \
-#	expat=2.2.9-r1 \
-#	lz4-libs=1.9.2-r0 \
-#	xz-libs=5.2.5-r0 \
-#	libarchive=3.4.3-r0 \
-#	ca-certificates=20191127-r0 \
-#	nghttp2-libs=1.40.0-r0 \
-#	libcurl=7.67.0-r0 \
-#	ncurses-terminfo-base=6.1_p20191130-r0 \
-#	ncurses-terminfo=6.1_p20191130-r0 \
-#	ncurses-libs=6.1_p20191130-r0 \
-#	libgcc=9.2.0-r3 \
-#	rhash=1.3.9-r0 \
-#	libstdc++=9.2.0-r3 \
-#	libuv=1.34.0-r0 \
-#	cmake=3.15.5-r0 \
-#	binutils=2.33.1-r0 \
-#	gmp=6.1.2-r1 \
-#	isl=0.18-r0 \
-#	libgomp=9.2.0-r3 \
-#	libatomic=9.2.0-r3 \
-#	mpfr4=4.0.2-r1 \
-#	mpc1=1.1.0-r1 \
-#	gcc=9.3.0-r2 \
-#	pcre2=10.35-r0 \
-#	git=2.26.2-r0 \
+	rtl-sdr=0.6.0-r0 \
+	librtlsdr-dev=0.6.0-r0 \
 	libusb-dev=1.0.23-r0 \
-#	pkgconf=1.7.2-r0 \
-#	libusb-dev=1.0.23-r0 \
-#	make=4.3-r0 \
-#	musl-dev=1.1.24-r9 \
-#	go=1.13.14-r0 \
+#    \
+#    && cd /tmp \
+#    && git clone git://git.osmocom.org/rtl-sdr.git \
+#    && cd rtl-sdr \
+#    && mkdir build \
+#    && cd build \
+#    && cmake ../ -DINSTALL_UDEV_RULES=ON -DDETACH_KERNEL_DRIVER=ON -DCMAKE_INSTALL_PREFIX:PATH=/usr/local \
+#    && cmake ../ -DDETACH_KERNEL_DRIVER=ON \
+#    && make \
+#    && make install \
     \
-    && cd /home \
-    && git clone git://git.osmocom.org/rtl-sdr.git \
-    && cd rtl-sdr \
-    && mkdir build \
-    && cd build \
-    && cmake ../ -DINSTALL_UDEV_RULES=ON -DDETACH_KERNEL_DRIVER=ON -DCMAKE_INSTALL_PREFIX:PATH=/usr/local \
-    && cmake ../ -DDETACH_KERNEL_DRIVER=ON \
-    && make \
-    && make install \
-    \
+    && cd /tmp \
     && git clone https://github.com/merbanan/rtl_433 \
     && cd rtl_433/ \
+    && git checkout feat-atlas \
     && mkdir build \
     && cd build \
     && cmake ../ \
     && make \
-    && make install \
-    \
-    && apk add --no-cache libusb mosquitto-clients jq
-
+    && make install
 
 FROM smarthouseint/addon-base-amd64:0.0.7
 
@@ -84,6 +53,8 @@ COPY rootfs /
 COPY --from=build-env /usr/local/include /usr/local/include
 COPY --from=build-env /usr/local/lib /usr/local/lib
 COPY --from=build-env /usr/local/bin /usr/local/bin
+COPY --from=build-env /usr/local/etc /usr/local/etc
+
 
 RUN \
     set -o pipefail \
@@ -94,9 +65,11 @@ RUN \
     \
     && apk --no-cache --update --available upgrade\
     && apk add --no-cache \
+	rtl-sdr=0.6.0-r0 \
+	librtlsdr-dev=0.6.0-r0 \
 	libusb=1.0.23-r0 \
-	mosquitto-clients \
-	jq
+	mosquitto-clients=1.6.9-r0 \
+	jq=1.6-r1
 
 #	python3=3.8.1-r0 \
 #    && pip3 install \
@@ -112,9 +85,9 @@ ARG BUILD_VERSION
 LABEL \
     io.hass.name="RTL433 TO MQTT" \
     io.hass.description="An RTL433 To MQTT Bridge" \
-    io.hass.arch="${BUILD_ARCH}" \
+    io.hass.arch="amd64" \
     io.hass.type="addon" \
-    io.hass.version=${BUILD_VERSION} \
+    io.hass.version=0.0.1 \
     maintainer="Alex Savin <alex@smarthouse.site>" \
     org.label-schema.description="An RTL433 To MQTT Bridge" \
     org.label-schema.build-date=${BUILD_DATE} \

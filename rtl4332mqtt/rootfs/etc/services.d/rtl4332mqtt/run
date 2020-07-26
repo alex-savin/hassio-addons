@@ -4,9 +4,6 @@
 # Runs the RTL433 TO MQTT
 # ==============================================================================
 
-# Wait for RTL-SDR to become available
-bashio::net.wait_for 1234 localhost 300
-
 # Run the RTL4332MQTT
 bashio::log.info "Starting RTL433 2 MQTT..."
 exec sh /app/rtl2mqtt.sh

@@ -1,5 +1,5 @@
 {
-    "name": "RTL4332MQTT",
+    "name": "RTL433 To MQTT",
     "version": "0.0.1",
     "slug": "rtl4332mqtt",
     "description": "An RTL433 To MQTT Bridge",
