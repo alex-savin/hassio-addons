@@ -1,9 +1,0 @@
-#!/usr/bin/with-contenv bashio
-# ==============================================================================
-# SmartHouse Hass.io Add-ons: RTL4332MQTT
-# Runs the RTL433 TO MQTT
-# ==============================================================================
-
-# Run the RTL4332MQTT
-bashio::log.info "Starting RTL433 2 MQTT..."
-exec sh /app/rtl2mqtt.sh

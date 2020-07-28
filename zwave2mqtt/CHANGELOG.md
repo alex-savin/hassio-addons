@@ -1,7 +1,11 @@
 # Changelog
 
+## 0.2.0
+- Bumped ZWave2MQTT to v4.0.0
+- Bumped OpenZWave to v1.6.1240
+
 ## 0.1.6
-- Bumpes ZWave2MQTT to v3.4.0
+- Bumped ZWave2MQTT to v3.4.0
 - Bumped OpenZWave to v1.6.1185
 
 ## 0.1.5
