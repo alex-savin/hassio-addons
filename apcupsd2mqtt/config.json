@@ -24,7 +24,6 @@
     "devicetree": false,
     "stdin": false,
     "legacy": false,
-
     "options": {
 	"log_level": "info",
 	"enable_auto_discovery": false,
@@ -38,16 +37,16 @@
 	    "topic": "homeassistant/"
 	},
 	"upses": [
-		{
-		"name": "apc_01",
-		"url": "127.0.0.1:3551"
+	    {
+	        "name": "apc_01",
+	        "url": "127.0.0.1:3551"
 	    }
-	],
+	]
     },
     "schema": {
 	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
 	"enable_auto_discovery": "bool",
-	"update": "int"
+	"update": "int",
 	"mqtt": {
 	    "host": "str",
 	    "port": "int",
@@ -58,10 +57,10 @@
 	},
 	"upses": [
 	    {
-		"name": "str",
-		"url": "str"
+	        "name": "str",
+	        "url": "str"
 	    }
-	],
+	]
     },
     "timeout": 20,
     "environment": {
