@@ -1,6 +1,6 @@
 {
     "name": "Apcupsd2MQTT",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "slug": "apcupsd2mqtt",
     "description": "An HTTP Apcupsd to MQTT Iterator",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
@@ -64,5 +64,5 @@
     "environment": {
 	"LOG_FORMAT": "{LEVEL}: {MESSAGE}"
     },
-    "image": "smarthouseint/{arch}-addon-apcupsd2mqtt"
+    "image": "smarthouseint/addon-apcupsd2mqtt"
 }

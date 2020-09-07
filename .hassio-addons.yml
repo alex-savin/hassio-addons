@@ -8,7 +8,7 @@ addons:
   apcupsd2mqtt:
     repository: alex-savin/addon-apcupsd2mqtt
     target: apcupsd2mqtt
-    image: smarthouseint/{arch}-addon-apcupsd2mqtt
+    image: smarthouseint/addon-apcupsd2mqtt
   google-assistant-webserver:
     repository: alex-savin/addon-google-assistant-webserver
     target: google-assistant-webserver
