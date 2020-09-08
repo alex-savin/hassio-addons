@@ -27,12 +27,14 @@
     "options": {
 	"log_level": "info",
 	"enable_auto_discovery": false,
-	"update": 5,
+	"update": 10,
+	"offset": 10,
 	"mqtt": {
 	    "host": "",
 	    "port": 1883,
 	    "username": "",
 	    "password": "",
+	    "retained": false,
 	    "topic": ""
 	},
 	"miners": [
@@ -46,11 +48,13 @@
 	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
 	"enable_auto_discovery": "bool",
 	"update": "int",
+	"offset": "int",
 	"mqtt": {
 	    "host": "str",
 	    "port": "int",
 	    "username": "str",
 	    "password": "str",
+	    "retained": "bool",
 	    "topic": "str"
 	},
 	"miners": [

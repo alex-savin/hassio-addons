@@ -4,7 +4,7 @@ addons:
   anthill2mqtt:
     repository: alex-savin/addon-anthill2mqtt
     target: anthill2mqtt
-    image: smarthouseint/{arch}-addon-anthill2mqtt
+    image: smarthouseint/addon-anthill2mqtt
   apcupsd2mqtt:
     repository: alex-savin/addon-apcupsd2mqtt
     target: apcupsd2mqtt
