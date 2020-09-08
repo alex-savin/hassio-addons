@@ -24,7 +24,7 @@ addons:
   rtl4332mqtt:
     repository: alex-savin/addon-rtl4332mqtt
     target: rtl4332mqtt
-    image: smarthouseint/{arch}-addon-rtl4332mqtt
+    image: smarthouseint/addon-rtl4332mqtt
   rtlamr:
     repository: alex-savin/addon-rtlamr
     target: rtlamr

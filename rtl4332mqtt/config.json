@@ -1,6 +1,6 @@
 {
     "name": "RTL433 To MQTT",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "slug": "rtl4332mqtt",
     "description": "An RTL433 To MQTT Bridge",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
@@ -64,5 +64,5 @@
     "environment": {
 	"LOG_FORMAT": "{LEVEL}: {MESSAGE}"
     },
-    "image": "smarthouseint/{arch}-addon-rtl4332mqtt"
+    "image": "smarthouseint/addon-rtl4332mqtt"
 }
