@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.2.0
+- Chnaged Dockerfile and base container
+
 ## 0.1.4
 - Changed S6 service run file
 

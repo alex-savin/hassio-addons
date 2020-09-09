@@ -16,7 +16,7 @@ addons:
   live555:
     repository: alex-savin/addon-live555
     target: live555
-    image: smarthouseint/{arch}-addon-live555
+    image: smarthouseint/addon-live555
   postgres:
     repository: alex-savin/addon-postgres
     target: postgres
