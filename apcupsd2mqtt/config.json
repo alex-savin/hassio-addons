@@ -1,6 +1,6 @@
 {
     "name": "Apcupsd2MQTT",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "slug": "apcupsd2mqtt",
     "description": "An HTTP Apcupsd to MQTT Iterator",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
@@ -24,12 +24,13 @@
     "devicetree": false,
     "stdin": false,
     "legacy": false,
+
     "options": {
 	"log_level": "info",
 	"enable_auto_discovery": false,
 	"update": 5,
 	"mqtt": {
-	    "host": "127.0.0.1",
+	    "host": "hassio.local",
 	    "port": 1883,
 	    "username": "username",
 	    "password": "password",
@@ -37,16 +38,16 @@
 	    "topic": "homeassistant/"
 	},
 	"upses": [
-	    {
-	        "name": "apc_01",
-	        "url": "127.0.0.1:3551"
+		{
+		"name": "apc_01",
+		"url": "127.0.0.1:3551"
 	    }
-	]
+	],
     },
     "schema": {
 	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
 	"enable_auto_discovery": "bool",
-	"update": "int",
+	"update": "int"
 	"mqtt": {
 	    "host": "str",
 	    "port": "int",
@@ -57,10 +58,10 @@
 	},
 	"upses": [
 	    {
-	        "name": "str",
-	        "url": "str"
+		"name": "str",
+		"url": "str"
 	    }
-	]
+	],
     },
     "timeout": 20,
     "environment": {
