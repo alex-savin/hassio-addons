@@ -42,7 +42,7 @@
 		"name": "apc_01",
 		"url": "127.0.0.1:3551"
 	    }
-	],
+	]
     },
     "schema": {
 	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
@@ -61,7 +61,7 @@
 		"name": "str",
 		"url": "str"
 	    }
-	],
+	]
     },
     "timeout": 20,
     "environment": {
