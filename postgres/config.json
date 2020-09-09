@@ -1,6 +1,6 @@
 {
     "name": "PostgreSQL DB",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "slug": "postgres",
     "description": "An SQL database server",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
@@ -84,5 +84,5 @@
     "environment": {
 	"LOG_FORMAT": "{LEVEL}: {MESSAGE}"
     },
-    "image": "smarthouseint/{arch}-addon-postgres"
+    "image": "smarthouseint/addon-postgresql"
 }

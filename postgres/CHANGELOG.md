@@ -1,4 +1,6 @@
 # Changelog
+## 0.3.0
+- Changed base image
 
 ## 0.2.3
 - Fixed bashio support for based image

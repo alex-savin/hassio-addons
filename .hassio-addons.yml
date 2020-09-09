@@ -20,7 +20,7 @@ addons:
   postgres:
     repository: alex-savin/addon-postgres
     target: postgres
-    image: smarthouseint/{arch}-addon-postgres
+    image: smarthouseint/addon-postgres
   rtl4332mqtt:
     repository: alex-savin/addon-rtl4332mqtt
     target: rtl4332mqtt
