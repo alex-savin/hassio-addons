@@ -1,7 +1,7 @@
 {
     "name": "Anthill2MQTT",
-    "version": "0.0.2",
-    "slug": "anthill2mqtt",
+    "version": "0.0.3",
+    "slug": "apcupsd2mqtt",
     "description": "An HTTP Bitmain Ant Miner to MQTT Iterator",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
     "url": "https://github.com/alex-savin/hassio-addons/tree/master/anthill2mqtt",
@@ -30,12 +30,12 @@
 	"update": 10,
 	"offset": 10,
 	"mqtt": {
-	    "host": "hassio.local",
+	    "host": "",
 	    "port": 1883,
-	    "username": "username",
-	    "password": "password",
+	    "username": "",
+	    "password": "",
 	    "retained": false,
-	    "topic": "homeassistant/#"
+	    "topic": ""
 	},
 	"miners": [
 		{
