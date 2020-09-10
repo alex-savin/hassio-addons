@@ -30,12 +30,12 @@
 	"update": 10,
 	"offset": 10,
 	"mqtt": {
-	    "host": "",
+	    "host": "hassio.local",
 	    "port": 1883,
-	    "username": "",
-	    "password": "",
+	    "username": "anthill2mqtt",
+	    "password": "Passw0rd",
 	    "retained": false,
-	    "topic": ""
+	    "topic": "homeassistant/#"
 	},
 	"miners": [
 		{
