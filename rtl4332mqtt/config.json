@@ -1,10 +1,10 @@
 {
-    "name": "RTL433 To MQTT",
-    "version": "0.0.2",
-    "slug": "rtl4332mqtt",
-    "description": "An RTL433 To MQTT Bridge",
+    "name": "RTLAMR",
+    "version": "0.0.8",
+    "slug": "rtlamr",
+    "description": "An RTLAMR Smart Meter reader",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
-    "url": "https://github.com/alex-savin/hassio-addons/tree/master/rtl4332mqtt",
+    "url": "https://github.com/alex-savin/hassio-addons/tree/master/rtlamr",
     "startup": "before",
     "boot": "auto",
     "map": [
@@ -32,37 +32,53 @@
     "devicetree": false,
     "stdin": false,
     "legacy": false,
-    "options":
-    {
+    "options": {
 	"log_level": "info",
 	"enable_auto_discovery": false,
-	"mqtt_host": "hassio.local",
-	"mqtt_user": "",
-	"mqtt_password": "",
-	"mqtt_topic": "homeassistant/#",
-	"device_id": 1,
-	"protocol": 40,
-	"frequency": 319500000,
-	"gain": 60,
-	"frequency_offset": 350
+	"device_id": 0,
+	"timezone": "America/New_York
+	"cycle_date": "23","
+	"meters": [
+	    {
+		"id": "str",
+		"type": "str"
+	    }
+	],
+	"mqtt": {
+	    "host": "core-mosquitto",
+	    "port": "1883",
+	    "username": "",
+	    "password": "",
+	    "retained": true,
+	    "qos": 0,
+	    "topic": "meters"
+	}
     },
-    "schema":
-    {
+    "schema": {
 	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
 	"enable_auto_discovery": "bool",
-	"mqtt_host": "str",
-	"mqtt_user": "str",
-	"mqtt_password": "str",
-	"mqtt_topic": "str",
 	"device_id": "int",
-	"protocol": "int",
-	"frequency": "int",
-	"gain": "int",
-	"frequency_offset": "int"
+	"timezone": "str",
+	"cycle_date": "int",
+	"meters": [
+	    {
+		"id": "int",
+		"type": "str",
+	    }
+	],
+	"mqtt": {
+	    "host": "str",
+	    "port": "int",
+	    "username": "str",
+	    "password": "str",
+	    "retained": "bool",
+	    "qos": "int",
+	    "topic": "str"
+	}
     },
     "timeout": 20,
     "environment": {
 	"LOG_FORMAT": "{LEVEL}: {MESSAGE}"
     },
-    "image": "smarthouseint/addon-rtl4332mqtt"
+    "image": "smarthouseint/addon-rtlamr"
 }
