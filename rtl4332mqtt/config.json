@@ -63,7 +63,7 @@
 	"meters": [
 	    {
 		"id": "int",
-		"type": "str",
+		"type": "str"
 	    }
 	],
 	"mqtt": {
