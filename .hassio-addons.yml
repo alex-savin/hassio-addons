@@ -28,7 +28,7 @@ addons:
   rtlamr:
     repository: alex-savin/addon-rtlamr
     target: rtlamr
-    image: smarthouseint/{arch}-addon-rtlamr
+    image: smarthouseint/addon-rtlamr
   vernemq:
     repository: alex-savin/addon-vernemq
     target: vernemq
