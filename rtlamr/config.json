@@ -1,6 +1,6 @@
 {
     "name": "RTLAMR",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "slug": "rtlamr",
     "description": "An RTLAMR Smart Meter reader",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
@@ -34,31 +34,45 @@
     "legacy": false,
     "options": {
 	"log_level": "info",
-	"meters": {
-	    "gas": "",
-	    "water": "",
-	    "energy": ""
-	},
+	"enable_auto_discovery": false,
+	"device_id": 0,
+	"timezone": "America/New_York",
+	"cycle_date": "23",
+	"meters": [
+	    {
+		"id": "str",
+		"type": "str"
+	    }
+	],
 	"mqtt": {
-	    "host": "",
-	    "port": "",
+	    "host": "core-mosquitto",
+	    "port": "1883",
 	    "username": "",
 	    "password": "",
-	    "topic": ""
+	    "retained": true,
+	    "qos": 0,
+	    "topic": "meters"
 	}
     },
     "schema": {
 	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
-	"meters": {
-	    "gas": "int?",
-	    "water": "int?",
-	    "energy": "int?"
-	},
+	"enable_auto_discovery": "bool",
+	"device_id": "int",
+	"timezone": "str",
+	"cycle_date": "int",
+	"meters": [
+	    {
+		"id": "int",
+		"type": "str",
+	    }
+	],
 	"mqtt": {
 	    "host": "str",
 	    "port": "int",
 	    "username": "str",
 	    "password": "str",
+	    "retained": "bool",
+	    "qos": "int",
 	    "topic": "str"
 	}
     },
@@ -66,5 +80,5 @@
     "environment": {
 	"LOG_FORMAT": "{LEVEL}: {MESSAGE}"
     },
-    "image": "smarthouseint/{arch}-addon-rtlamr"
+    "image": "smarthouseint/addon-rtlamr"
 }
