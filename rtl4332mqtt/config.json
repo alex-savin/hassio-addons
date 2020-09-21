@@ -36,7 +36,7 @@
 	"log_level": "info",
 	"enable_auto_discovery": false,
 	"device_id": 0,
-	"timezone": "America/New_York
+	"timezone": "America/New_York",
 	"cycle_date": "23","
 	"meters": [
 	    {
