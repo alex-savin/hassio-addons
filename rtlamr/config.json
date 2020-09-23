@@ -65,7 +65,7 @@
 	    {
 		"id": "int",
 		"type": "str",
-		"protocol": "match(^(scm|scm+,r900,idm)$)"
+		"protocol": "str"
 	    }
 	],
 	"mqtt": {
