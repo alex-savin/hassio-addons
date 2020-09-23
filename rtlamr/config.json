@@ -1,6 +1,6 @@
 {
     "name": "RTLAMR",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "slug": "rtlamr",
     "description": "An RTLAMR Smart Meter reader",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
@@ -40,8 +40,9 @@
 	"cycle_date": "23",
 	"meters": [
 	    {
-		"id": "str",
-		"type": "str"
+		"id": "",
+		"type": "",
+		"protocol" ""
 	    }
 	],
 	"mqtt": {
@@ -63,7 +64,8 @@
 	"meters": [
 	    {
 		"id": "int",
-		"type": "str"
+		"type": "str",
+		"protocol": "match(^(scm|scm+,r900,idm)$)"
 	    }
 	],
 	"mqtt": {
@@ -80,5 +82,5 @@
     "environment": {
 	"LOG_FORMAT": "{LEVEL}: {MESSAGE}"
     },
-    "image": "smarthouseint/addon-rtlamr2mqtt"
+    "image": "smarthouseint/addon-rtlamr"
 }

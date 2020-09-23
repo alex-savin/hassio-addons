@@ -1,10 +1,9 @@
 # Changelog
+## 0.0.9
+- Reduce rtlamr CPU usage by limiting listening protocols
 
 ## 0.0.8
-- 
-
-## 0.0.7
-- 
+- Redeveloped in Golang
 
 ## 0.0.1
 - Initial release
