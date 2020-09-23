@@ -82,5 +82,5 @@
     "environment": {
 	"LOG_FORMAT": "{LEVEL}: {MESSAGE}"
     },
-    "image": "smarthouseint/addon-rtlamr"
+    "image": "smarthouseint/addon-rtlamr2mqtt"
 }
