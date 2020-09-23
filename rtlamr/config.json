@@ -42,7 +42,7 @@
 	    {
 		"id": "",
 		"type": "",
-		"protocol" ""
+		"protocol" "",
 	    }
 	],
 	"mqtt": {
@@ -65,7 +65,7 @@
 	    {
 		"id": "int",
 		"type": "str",
-		"protocol": "match(^(scm|scm+,r900,idm)$)"
+		"protocol": "match(^(scm|scm+,r900,idm)$)",
 	    }
 	],
 	"mqtt": {
