@@ -1,6 +1,6 @@
 {
     "name": "RTL433 To MQTT",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "slug": "rtl4332mqtt",
     "description": "An RTL433 To MQTT Bridge",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
@@ -36,11 +36,16 @@
     {
 	"log_level": "info",
 	"enable_auto_discovery": false,
-	"mqtt_host": "hassio.local",
-	"mqtt_user": "",
-	"mqtt_password": "",
-	"mqtt_topic": "homeassistant/#",
-	"device_id": 1,
+	"mqtt": {
+	    "host": "core-mosquitto",
+	    "port": "1883",
+	    "username": "username",
+	    "password": "password",
+	    "retained": true,
+	    "qos": 0,
+	    "topic": "meters"
+	},
+	"device_id": 0,
 	"protocol": 40,
 	"frequency": 319500000,
 	"gain": 60,
@@ -50,10 +55,15 @@
     {
 	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
 	"enable_auto_discovery": "bool",
-	"mqtt_host": "str",
-	"mqtt_user": "str",
-	"mqtt_password": "str",
-	"mqtt_topic": "str",
+	"mqtt": {
+	    "host": "str",
+	    "port": "int",
+	    "username": "str",
+	    "password": "str",
+	    "retained": "bool",
+	    "qos": "int",
+	    "topic": "str"
+	},
 	"device_id": "int",
 	"protocol": "int",
 	"frequency": "int",
