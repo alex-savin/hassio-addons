@@ -36,4 +36,4 @@ addons:
   zwave2mqtt:
     repository: alex-savin/addon-zwave2mqtt
     target: zwave2mqtt
-    image: smarthouseint/{arch}-addon-zwave2mqtt
+    image: smarthouseint/addon-zwave2mqtt
