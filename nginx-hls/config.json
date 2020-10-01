@@ -36,8 +36,9 @@
 	"timezone": "America/New_York",
 	"streams": [
 	    {
-		"name": "str",
-		"url": "rtsp://[username]:[password]@[camera_ip]:[port]/[stream_uri]"
+		"name": "Stream Name",
+		"url": "rtsp://[username]:[password]@[camera_ip]:[port]/[stream_uri]",
+		"id": "stream_id_01"
 	    }
 	]
     },
@@ -47,7 +48,8 @@
 	"streams": [
 	    {
 		"name": "str",
-		"url": "str"
+		"url": "str",
+		"id": "str"
 	    }
 	]
     },
