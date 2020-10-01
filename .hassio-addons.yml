@@ -17,6 +17,10 @@ addons:
     repository: alex-savin/addon-live555
     target: live555
     image: smarthouseint/addon-live555
+  nginx-hls:
+    repository: alex-savin/addon-nginx-hls
+    target: nginx-hls
+    image: smarthouseint/addon-nginx-hls
   postgres:
     repository: alex-savin/addon-postgres
     target: postgres
