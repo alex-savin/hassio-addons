@@ -1,6 +1,6 @@
 {
     "name": "Nginx HLS Streaming Server",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "slug": "nginx-hls",
     "description": "An Nginx HLS Streaming Server",
     "arch": ["aarch64", "amd64", "armhf", "i386", "armv7"],
@@ -31,6 +31,7 @@
     "devicetree": false,
     "stdin": false,
     "legacy": false,
+    "video": true,
     "options": {
 	"log_level": "info",
 	"timezone": "America/New_York",
