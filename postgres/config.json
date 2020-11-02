@@ -1,6 +1,6 @@
 {
     "name": "PostgreSQL DB",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "slug": "postgres",
     "description": "An SQL database server",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
@@ -40,6 +40,7 @@
     "legacy": false,
     "options": {
 	"log_level": "info",
+	"timezone": "America/New_York",
 	"databases": ["homeassistant"],
 	"roles": [
 	    {
@@ -61,6 +62,7 @@
     },
     "schema": {
 	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)",
+	"timezone": "str",
 	"databases": ["str"],
 	"roles": [
 	    {
