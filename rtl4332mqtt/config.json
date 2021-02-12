@@ -1,6 +1,6 @@
 {
     "name": "RTL433 To MQTT",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "slug": "rtl4332mqtt",
     "description": "An RTL433 To MQTT Bridge",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],

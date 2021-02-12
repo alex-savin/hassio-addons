@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.0.6
+- Changed python script
+
 ## 0.0.5
 - Changes to config.json
 
