@@ -1,18 +1,16 @@
 {
     "name": "RTL433 To MQTT",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "slug": "rtl4332mqtt",
     "description": "An RTL433 To MQTT Bridge",
     "arch": ["amd64", "i386", "armhf", "armv7", "aarch64"],
     "url": "https://github.com/alex-savin/hassio-addons/tree/master/rtl4332mqtt",
-    "startup": "before",
+    "startup": "services",
     "boot": "auto",
     "map": [
 	"share"
     ],
-    "devices": [
-	"/dev/bus/usb:/dev/bus/usb:rwm"
-    ],
+    "usb": true,
     "auto_uart": true,
     "docker_api": false,
     "hassio_api": true,
@@ -35,6 +33,7 @@
     "options":
     {
 	"log_level": "info",
+	"timezone": "America/New_York",
 	"enable_auto_discovery": false,
 	"mqtt": {
 	    "host": "core-mosquitto",
@@ -54,6 +53,7 @@
     "schema":
     {
 	"log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)?",
+	"timezone": "str",
 	"enable_auto_discovery": "bool",
 	"mqtt": {
 	    "host": "str",
