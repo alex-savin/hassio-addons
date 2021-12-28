@@ -1,4 +1,7 @@
 # Changelog
+## 0.0.11
+- Added "device_class" and "state_class" attributes for meter entities
+
 ## 0.0.10
 - Support some changes to addon configuration
 
